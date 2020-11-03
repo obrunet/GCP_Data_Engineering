@@ -7,12 +7,9 @@ will be updated later
 # Contents
 
 ## Theory
-- Storage Technologies
-    - How to choose the appropriate system
-    - Building and Operationalizing
+- Storage Technologies Comparison
 - Data Pipelines
-- Data Processing
-- Building and Operationalizing Processing Infrastructure
+- Data Processing Technologies Comparison
 - Security & Compliance
 - Reliability, Scalability, and Availability
 - Understanding Data Operations for Flexibility and Portability
