@@ -7,6 +7,7 @@ will be updated later
 # Contents
 
 ## Theory
+- All services
 - Storage Technologies Comparison
 - Data Pipelines
 - Data Processing Technologies Comparison
