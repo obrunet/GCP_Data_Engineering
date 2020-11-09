@@ -19,7 +19,7 @@ stage = one or more nodes / an edge = a flow
 
 Example
 
-![Example](./pipeline_example.png "Example")
+![Example](pictures/pipeline_example.png "Example")
 
 ### Types
 
@@ -33,13 +33,36 @@ for storing data from multiple sources, organized in a dimensional data model ie
 
 - Steaming processing pipelines
 undeing, continuously, may not need to process & anlayze the data as soon as possible. The difference with batch is the way that you group the data. You need to pick subsets of the stream to work on at any one time. Consider serveral factors :
-    - Event time (the time that the event occurs) & processing time (when data arrives at endpoint for ingestion) -> it is important to use one of these times consistently for ordering the streams
-    - Sliding (a set of consecutive points) & tumbling (move forward by the width of the window) windows
-    - Late arriving data and watermarks
+    - __Event time__ (the time that the event occurs) & __processing time__ (when data arrives at endpoint for ingestion) -> it is important to use one of these times consistently for ordering the streams
+    - __Sliding__ (a set of consecutive points) & __tumbling__ (move forward by the width of the window) __windows__
+    - __Late arriving data & watermarks__ : you've to decide how long you'll wait for data to arrive. A watermark is basically a timestamp indicating taht no data older than that timestamp will ever appear. Windows are just small batches & watermarks indicate a boundary on the lateness of data. 
     - Missing data
+
+- Hot path (make data available as oon as possible) & Cold path ingestion :
+
+    ![Example](pictures/hot_path.png "Example")
+
+- ML pipelines
+    - ingestion
+    - preprocessing (equivalent to transformation in data warehousing pipes)
+    - feature engineering
+    - model training & evaluation
+    - deployment
+
+## Components
+
+### Cloud Pub/Sub
+a realt ime messgin service taht suppors both push & pull suscription models
+managed service
+requires no provisionning of servers or clusters
+automatically scale and partition load as needed
+
+
+### Dataproc
 
 Use Dataproc (in Spark) if you're migrating from Hadoop
 
+### Dataflow
 
 or Datafow (similar to Apache Beam) for new processes
 serverless
