@@ -52,7 +52,7 @@ undeing, continuously, may not need to process & anlayze the data as soon as pos
 ## Components
 
 ### Cloud Pub/Sub
-a realt ime messgin service taht suppors both push & pull suscription models
+a real time messgin service taht suppors both push & pull suscription models
 managed service
 requires no provisionning of servers or clusters
 automatically scale and partition load as needed

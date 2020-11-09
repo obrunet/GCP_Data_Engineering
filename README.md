@@ -8,17 +8,13 @@ will be updated later
 
 ## Theory
 - All services
-- Storage Technologies Comparison
-- Data Pipelines Design
-- Data Processing Technologies Comparison
+- Storage, Data representation & Technologies Comparison
+- [Data Pipelines Design](Pipelines.md)
+- Processing Technologies Comparison
 - Security & Compliance
-- Reliability, Scalability, and Availability
-- Understanding Data Operations for Flexibility and Portability
+- Flexibility & Portability
 - Machine Learning
-    - ML Pipelines Deployment
-    - Infrastructure
-    - Measuring, Monitoring, and Troubleshooting
-    - Prebuilt Models
+
 
 ## Practice
 will be updated later
