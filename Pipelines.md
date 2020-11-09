@@ -52,10 +52,10 @@ undeing, continuously, may not need to process & anlayze the data as soon as pos
 ## Components
 
 ### Cloud Pub/Sub
-a real time messgin service taht suppors both push & pull suscription models
-managed service
-requires no provisionning of servers or clusters
-automatically scale and partition load as needed
+- a real time messaging service taht suppors both push & pull suscription models
+- managed service
+- requires no provisionning of servers or clusters
+- automatically scale and partition load as needed
 
 
 ### Dataproc
@@ -63,7 +63,14 @@ automatically scale and partition load as needed
 Use Dataproc (in Spark) if you're migrating from Hadoop
 
 ### Dataflow
+- a managed stream and batch processing service.
+- core component for building pipelines taht collect, transform, and output data
+- pipelines are written using the Apache Beam API
 
+
+
+
+---
 or Datafow (similar to Apache Beam) for new processes
 serverless
 provides a unified batch and stream processing model 

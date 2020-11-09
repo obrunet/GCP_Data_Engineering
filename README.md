@@ -8,7 +8,7 @@ will be updated later
 
 ## Theory
 - All services
-- Storage, Data representation & Technologies Comparison
+- Storage, Data representation
 - [Data Pipelines Design](Pipelines.md)
 - Processing Technologies Comparison
 - Security & Compliance
