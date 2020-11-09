@@ -9,7 +9,7 @@ will be updated later
 ## Theory
 - All services
 - Storage Technologies Comparison
-- Data Pipelines
+- Data Pipelines Design
 - Data Processing Technologies Comparison
 - Security & Compliance
 - Reliability, Scalability, and Availability
