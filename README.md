@@ -1,5 +1,5 @@
 # GCP_Data_Engineering
-In a nutshell everything you need to know in order to prepare the GCP Profesionnal Data Engineer Certification
+In a nutshell everything you need to know / to learn to do in order to prepare the GCP Profesionnal Data Engineer Certification
 
 # Introduction
 will be updated later
