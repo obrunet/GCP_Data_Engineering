@@ -28,5 +28,3 @@ will be updated later
 - Official Study Guide
 - Exams
 - Qwliks
-
-to be continued
