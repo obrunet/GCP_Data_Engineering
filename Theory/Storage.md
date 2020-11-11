@@ -27,7 +27,9 @@ Different storage systems for different purposes, the choice is determined by th
 
 2. Storage
     1. How data is accessed : for instance, online transaction (query for specific records using a set of filters) vs a ML pipeline (training with thousand rows ie in batch mode) 
-    2. Access constrols :fffffffffffffffffffffff
+    2. Access constrols :
+        - Fine grained : implemented at the app level or by creating views that limit the data available to some users
+        - Coarse grained : based on bucket permissions & access contro lists on objects stored in a bucket
     3. How long data will be stored :
         - if transient : could be stored on SSD (lost when instance shut down)
         - if frequently used : well suited in either relational or NoSQL db
@@ -41,17 +43,53 @@ Different storage systems for different purposes, the choice is determined by th
     2. Analysis
         - Extract usefull infos with statistical techniques
         - Description, characteristics, correlations, predictions, cluster subsets... --> Cloud Dataflow, Cloud Dataproc, BigQuery & Cloud ML Engine
-4. Exploration & dataviz
-dddddddddddddddddddddddddddddddd
+4. Exploration & dataviz (Cloud Datalab / Data Studio    
 
 
 ## Technical Aspects
 
+1. Volume
+2. Velocity : 
+    - the rate at which it is produced, sent & processed
+    - during ingestion, I/Os, it is important to match the velocity of incoming data with the rate at which the data store can write/read data
+    - Web & mobile apps (human entered data): typically low velocity
+    - IoT & time series (machine generated data): high velocity
+3. Variation of structure
+4. Data access patterns
+    - How much data is retrieved / written in a read / insert operation
+    - How often data is read / written
+
 ## Variation in data structure
+
+1. Structured = a fixed set of attributes -> 
+    columns = attributes / rows = records or entities
+    - OLTP : many operations one row at a time each (Cloud SQL & Cloud Spanner)
+    - OLAP (data warehousing) : the analyst would query many rows and only some columns (BigQuery uses a column oriented approach)
+2. Semi-structured = doesn't follow a fixed tabular format and instead stores schema attributes along with the data (set of attributes can vary from one instance to another). Allow users to add attributes without changing the schema
+    - Fully indexed : ffffffffffffffffffffffff
+    - Row-key access : fffffffffffffffffffffffffff
+3. Unstructured = doesn't have a defined schema or data model & may have an internal structure that is not relevant to the way it is stored.
+
+
+    
+
+-   | Structured        | Semi-structured           | Unstructured  |
+----| ------------- |:-------------:| -----:|
+schema  | fixed      |  attributes can vary | no defined |
+flexibiity   | low      | goog compromise      |   high |
+scalibity   | difficult | feasible      |    easy |
+examples   | tables | fffff      |    text (NLP), audio, video files, binary large objects (BLOBs) |
+
+
+## Decision tree
+    
+![Example](pictures/decision_tree.png "Example")
+
+
 
 ## Schemas for relational & NoSQL db
 
 
 
-![Example](pictures/pipeline_example.png "Example")
+
 
