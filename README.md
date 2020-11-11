@@ -1,6 +1,8 @@
 # GCP_Data_Engineering
 In a nutshell everything you need to know / to learn to do in order to prepare the GCP Profesionnal Data Engineer Certification
 
+![Example](Theory/pictures/GCP_logo.png "Example")
+
 # Introduction
 will be updated later
 
@@ -35,7 +37,3 @@ will be updated later
 - Official Study Guide
 - Exams
 - Qwliks
-
-
-https://github.com/obrunet/GCP_Data_Engineering/blob/main/Theory/Storage_choice.md
-https://github.com/obrunet/GCP_Data_Engineering/blob/main/Theory/Pipelines.md
