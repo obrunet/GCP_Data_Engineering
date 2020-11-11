@@ -17,9 +17,10 @@ will be updated later
 7. Reliability, Scalability & Availability
 8. Flexibility & Portability
 9. ML Pipelines
-10. Insfrastructure choice
+10. Choosing the Appropriate Insfrastructure
 11. Measure, Monitore & Troubleshoot ML
 12. Prebuilt ML Models as a Service
+13. Hadoop & Differences with GCP components
 
 
 ## Practice
@@ -34,3 +35,6 @@ will be updated later
 - Official Study Guide
 - Exams
 - Qwliks
+
+
+test
