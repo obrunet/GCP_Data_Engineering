@@ -66,19 +66,17 @@ Different storage systems for different purposes, the choice is determined by th
     - OLTP : many operations one row at a time each (Cloud SQL & Cloud Spanner)
     - OLAP (data warehousing) : the analyst would query many rows and only some columns (BigQuery uses a column oriented approach)
 2. Semi-structured = doesn't follow a fixed tabular format and instead stores schema attributes along with the data (set of attributes can vary from one instance to another). Allow users to add attributes without changing the schema
-    - Fully indexed : ffffffffffffffffffffffff
-    - Row-key access : fffffffffffffffffffffffffff
+    - Fully indexed : __TO BE CONTINUED__
+    - Row-key access : __TO BE CONTINUED__
 3. Unstructured = doesn't have a defined schema or data model & may have an internal structure that is not relevant to the way it is stored.
 
-
-    
 
 x       | Structured        | Semi-structured           | Unstructured  |
 --------| ------------- |-------------| -----|
 schema  | fixed      |  attributes can vary | no defined |
-flexibiity   | low      | goog compromise      |   high |
+flexibiity / search   | low/easy      | good compromise      |   high/difficult |
 scalibity   | difficult | feasible      |    easy |
-examples   | tables | fffff      |    text (NLP), audio, video files, binary large objects (BLOBs) |
+examples   | tables, Sheets, SQL, customer data, phone records, transaction history | JSON, text with an apparent pattern, XML      |    text (NLP), audio, video files, BLOBs |
 
 
 ## Decision tree
@@ -89,7 +87,24 @@ examples   | tables | fffff      |    text (NLP), audio, video files, binary lar
 
 ## Schemas for relational & NoSQL db
 
+Structured data is usually stored in relational db, whereas semi-structured ones in NoSQL db. The schema influences how data is stored and accessed.
+
+1. Relational DB design
+    - OLTP in most cases follows the following 3 out of 10 data normalization rules (to reduce the risk of anomalies):
+        - each column have an atomic value, no repeating groups & a primary key
+        - separate tables are created for values that apply to multiple rows and links them using foreign keys
+        - any column from a table that does not depend on a key is eliminated 
+    - OLAP are used for datawarehouse or datamart apps. Data is organized around several dimensions. It's designed to facilitate :
+        - rolling up & aggregatins data
+        - drilling down from summary data to detailed one
+        - pivoting & looking at data from different dimensions (slicing & dicing)
+2. NoSQL DB design
+    - Key-value : __TO BE CONTINUED__
+    - Document : __TO BE CONTINUED__
+    - Wide colum : __TO BE CONTINUED__
+    - Graph : __TO BE CONTINUED__
 
 
 
-
+## SQL language in a nutshell
+__TO BE CONTINUED__
