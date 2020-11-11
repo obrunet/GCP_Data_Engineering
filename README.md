@@ -7,7 +7,7 @@ will be updated later
 # Contents
 
 ## Theory
-0. All Services
+0. [All Services](Theory/Components.md)
 1. [Choosing the Appropriate Storage Technology](Theory/Storage.md)
 2. Build a Storage System & Operations
 3. [Design Data Pipelines](Theory/Pipelines.md)
