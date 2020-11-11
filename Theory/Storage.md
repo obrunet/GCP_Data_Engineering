@@ -73,8 +73,8 @@ Different storage systems for different purposes, the choice is determined by th
 
     
 
--   | Structured        | Semi-structured           | Unstructured  |
-----| ------------- |:-------------:| -----:|
+x       | Structured        | Semi-structured           | Unstructured  |
+--------| ------------- |-------------| -----|
 schema  | fixed      |  attributes can vary | no defined |
 flexibiity   | low      | goog compromise      |   high |
 scalibity   | difficult | feasible      |    easy |
