@@ -8,7 +8,7 @@ will be updated later
 
 ## Theory
 0. All Services
-1. Choosing the Appropriate Storage Technology
+1. [Choosing the Appropriate Storage Technology](Theory/Storage_choice.md)
 2. Build a Storage System & Operations
 3. [Design Data Pipelines](Theory/Pipelines.md)
 4. Design a Data Processing Solution
