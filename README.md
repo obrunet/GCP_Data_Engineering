@@ -7,13 +7,19 @@ will be updated later
 # Contents
 
 ## Theory
-- All services
-- Storage, Data representation
-- [Data Pipelines Design](Pipelines.md)
-- Processing Technologies Comparison
-- Security & Compliance
-- Flexibility & Portability
-- Machine Learning
+0. All Services
+1. Choosing the Appropriate Storage Technology
+2. Build a Storage System & Operations
+3. [Design Data Pipelines](Pipelines.md)
+4. Design a Data Processing Solution
+5. Build an Instrastructure & Operations
+6. Security & Compliance
+7. Reliability, Scalability & Availability
+8. Flexibility & Portability
+9. ML Pipelines
+10. Insfrastructure choice
+11. Measure, Monitore & Troubleshoot ML
+12. Prebuilt ML Models as a Service
 
 
 ## Practice
