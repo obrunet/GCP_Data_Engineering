@@ -81,7 +81,7 @@ examples   | tables, Sheets, SQL, customer data, phone records, transaction hist
 
 ## Decision tree
     
-![Example](pictures/decision_tree.png "Example")
+![Example](pictures/decision_tree.svg "Example")
 
 
 
