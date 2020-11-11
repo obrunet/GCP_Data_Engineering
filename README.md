@@ -8,7 +8,7 @@ will be updated later
 
 ## Theory
 0. All Services
-1. [Choosing the Appropriate Storage Technology](Theory/Storage_choice.md)
+1. [Choosing the Appropriate Storage Technology](Theory/Storage.md)
 2. Build a Storage System & Operations
 3. [Design Data Pipelines](Theory/Pipelines.md)
 4. Design a Data Processing Solution
@@ -37,4 +37,5 @@ will be updated later
 - Qwliks
 
 
-test
+https://github.com/obrunet/GCP_Data_Engineering/blob/main/Theory/Storage_choice.md
+https://github.com/obrunet/GCP_Data_Engineering/blob/main/Theory/Pipelines.md
