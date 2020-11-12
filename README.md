@@ -1,4 +1,4 @@
-# GCP_Data_Engineering
+# GCP Data Engineering
 In a nutshell everything you need to know / to learn to do in order to prepare the GCP Profesionnal Data Engineer Certification
 
 ![Example](Theory/pictures/GCP_logo.png "Example")
@@ -10,7 +10,7 @@ will be updated later
 
 ## Theory
 0. [All Services](Theory/Components.md)
-1. [Choosing the Appropriate Storage Technology](Theory/Storage.md)
+1. [Selection of the appropriate Storage Technology](Theory/Storage.md)
 2. Build a Storage System & Operations
 3. [Design Data Pipelines](Theory/Pipelines.md)
 4. Design a Data Processing Solution
@@ -32,8 +32,14 @@ will be updated later
 will be updated later
 
 # References
+- [Data Lifecycle](https://cloud.google.com/solutions/data-lifecycle-cloud-platform)
 - A Cloud Guru
 - Pluralsight
 - Official Study Guide
 - Exams
 - Qwliks
+
+https://medium.com/@avinash.gupta/gcp-certified-data-engineer-in-3-weeks-345ecfa667c3
+https://simonleewm.medium.com/a-study-guide-to-the-google-cloud-professional-data-engineer-certification-path-9e83e41e311
+https://deploy.live/blog/google-cloud-certified-professional-data-engineer/
+https://medium.com/google-cloud/a-tensorflow-glossary-cheat-sheet-382583b22932
