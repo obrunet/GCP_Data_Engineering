@@ -11,7 +11,7 @@ will be updated later
 ## Theory
 0. [All Services](Theory/Components.md)
 1. [Selection of the appropriate Storage Technology](Theory/Storage.md)
-2. Build a Storage System & Operations
+2. [Build a Storage System & Operations](Theory/Build_storage.md)
 3. [Design Data Pipelines](Theory/Pipelines.md)
 4. Design a Data Processing Solution
 5. Build an Instrastructure & Operations
