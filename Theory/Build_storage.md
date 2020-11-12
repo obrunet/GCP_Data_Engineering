@@ -144,9 +144,53 @@ Does not require administaration & operational support. Google'll take careof co
 
 ## Cloud Memorystore
 
+1. Characteristics
+    - a managed Redis service, you should still monitor : memory usage, duration periods of memory overload, cache-hit ratio & the number of expirable keys
+    - commonly used for caching
+    - Configuration (creation with the Cloud Console or gcloud commands) :
+        - Instance ID.
+        - Size specification.
+        - Region & zone.
+        - Redis version : 3.2 or 4.0 (recommended)
+        - Memory from 1 to 300 GB
+        - Maximum memory policy & an eviction policy
+    - High Availability / Instance tier : basic (not HA) or standard (failover replica in a different zone)
+    - Good Practice : to avoid memory pressure, scale up, lower the max memory limit, modify eviction policy, set time-to-live TTL parameters on volatile key (how long it's kept before becoming leigible for eviction), or manually delete data.
+    
+2. Read performance Improvement
+
+3. Import & export
+    - in beta
+    - export = backup file of the cache in a Cloud Storage bucket.
+        
+        During export : I/O can occur, but administration ops like scaling are not allowed. 
+    - Import = reads export files & overwrites the cache contents
+
+        During import : instance unavailable for I/O
+
+4. Scaling (to use more or less mem)
+    - Basic Tier : I/O are blocked. When resizing is over: all data is flushed 
+    - Standard Tier: can scale while continuing to support I/O : the replica is resized first and then synchronized with the primary. The primary then fails over.
+    - over 80% = memory pressure => scale up
+
 
 
 ## Cloud Storage
+
+1. Characteristics
+    - fully managed __???????????????__
+    - object storage system : files are treated as atomic, no presumed structure within the file that can be exploited to access a specific part of it.
+    - for persisting unstructured data (files, images, videos, backup files)
+    - Configuration : ??
+
+    - Backup : ??
+    - High Availability 
+
+    - Good Practice : ??
+    
+2. Read performance Improvement
+
+3. Import & export
 
 
 ![Example](pictures/decision_tree.svg "Example")
