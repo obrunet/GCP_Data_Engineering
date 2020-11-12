@@ -1,17 +1,15 @@
 # Data Processing Solutions
 
 Processing starts with data collection and ends with exploration & visualization.
+```
 - How to choose the appropriate compute service depending on the use case
-    - Compute Engine
-    - Kubernetes Engine
-    - App Engine
-    - Cloud Functions
-
-    Cloud Run & Anthos are not covered
+    - Compute Engine / Kubernetes Engine / App Engine / Cloud Functions
+    - Cloud Run & Anthos are not covered
 - Scalability, reliability, availability & maintainability
-- Hybrid & Edge computing architectures
+- Hybrid & Edge cloud
 - Distributed processing systems
 - Migration of data warehouse from on-premises DC to GCP
+```
 
 ## Infrastructure Design
 
@@ -46,9 +44,36 @@ Processing starts with data collection and ends with exploration & visualization
         - Flexible: runs Docker containers & allows devs to customize their runtime env --> avantage  of a PaaS with flexibility
 
 ### Cloud Functions
-    - serverless, managed compute service
-    - for running code in response to events that occur in the cloud. Writing a msg to a Cloud Pub/Sub or uploading files can triger the execution of a Cloud Function
-    - Funcs are coded in JavaScript, Python 3 & Go
+- serverless, managed compute service
+- for running code in response to events that occur in the cloud. Writing a msg to a Cloud Pub/Sub or uploading files can triger the execution of a Cloud Function
+- Funcs are coded in JavaScript, Python 3 & Go
+
+## Scalability, reliability, availability & maintainability
+
+gggggggggggggggggggggggggggggggggggggggggggggggg
+
+
+## Hybrid & Edge cloud
+
+### Hybrid Cloud
+Combines on-premises transaction processing systems with cloud-base analytics platforms. 
+Data is extracted & transferred to the cloud for analytics processing.
+OLTP systems have predictable workloads with little variance
+Whereas Analytic workloads are predictable but can be highly variable
+
+
+### Edge Cloud
+A variation of Hybrid Cloud. Used when 
+ - connectivity / network is not reliable or 
+ - bandwidth not sufficient. 
+ - low-latency processing is required (IoT, manufacturing...)
+ A combo of cloud & ege base computed may be used.
+ CI / CD process ensures consitency accross edge devices. When the full apps is run at the edge consider using containers.
+
+## Distributed processing systems
+
+
+## Migration of data warehouse from on-premises DC to GCP
 
 
 

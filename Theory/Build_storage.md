@@ -183,23 +183,17 @@ fffffffffffffffffffffffffffffffffffffffffffffff
     - High Availability / Instance tier : basic (not HA) or standard (failover replica in a different zone)
     - Good Practice : to avoid memory pressure, scale up, lower the max memory limit, modify eviction policy, set time-to-live TTL parameters on volatile key (how long it's kept before becoming leigible for eviction), or manually delete data.
     
-### 2. Read performance Improvement
-
-### 3. Import & export
+### 2. Import & export
     - in beta
     - export = backup file of the cache in a Cloud Storage bucket.
-        
         During export : I/O can occur, but administration ops like scaling are not allowed. 
     - Import = reads export files & overwrites the cache contents
-
         During import : instance unavailable for I/O
 
-### 4. Scaling (to use more or less mem)
+### 3. Scaling (to use more or less mem)
     - Basic Tier : I/O are blocked. When resizing is over: all data is flushed 
     - Standard Tier: can scale while continuing to support I/O : the replica is resized first and then synchronized with the primary. The primary then fails over.
     - over 80% = memory pressure => scale up
-
-
 
 ## Cloud Storage
 
