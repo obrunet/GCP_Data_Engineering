@@ -13,7 +13,7 @@ will be updated later
 1. [Selection of the appropriate Storage Technology](Theory/Storage.md)
 2. [Build a Storage System & Operations](Theory/Build_storage.md)
 3. [Design Data Pipelines](Theory/Pipelines.md)
-4. Design a Data Processing Solution
+4. [Data Processing Solutions](Theory/Processing.md)
 5. Build an Instrastructure & Operations
 6. Security & Compliance
 7. Reliability, Scalability & Availability
