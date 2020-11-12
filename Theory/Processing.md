@@ -94,8 +94,9 @@ DW = repositories of enterrprise data organized for BI reporting & analysis
 
 ### Future state design
     - definition of KPIs to measure the migration process effciency vs objectives
-    amount of data migrated, dataviz available...
-    - how you can take advantage of BigQuery (no need to plan for resources / serverless, Colossur FS to ensure availability...)
+      amount of data migrated, dataviz available...
+    - how you can take advantage of BigQuery 
+      (no need to plan for resources/serverless, Colossus FS to ensure availability...)
 
 ### Migration of data, jobs & access controls
     Alternative ways to prioritize, depending on your needs - iterative process
@@ -104,4 +105,5 @@ DW = repositories of enterrprise data organized for BI reporting & analysis
     - prioritize low-risk use case first
 
 ### Cloud DW validation
-    - Testing & validating all aspects (schema correctly defined, all data actually loaded, pipelines, queries, dataviz working flawlessly...)
+    - Testing & validating all aspects (schema correctly defined, all data actually loaded, pipelines, queries, 
+    dataviz working flawlessly...)
