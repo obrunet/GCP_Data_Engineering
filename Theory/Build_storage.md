@@ -8,9 +8,30 @@
 - [Cloud Memorystore]()
 - [Cloud Storage]()
 
-## Key Concepts
 
-fully managed : does not require as much administaration & operational support as an unmanaged DB : Google'll take car of core opetaional tasks, backups, OS updates, scaling, failover configuration, monitoring, authorizing network conections.
+# Unmanaged Databases
+= self-managed. You will be responsible for
+- OS Updates & patch
+- DB systme Updates & patch
+- Backing up & recovery
+- Network access conf
+- Disk space management
+- Monitoring performance & resource utilization
+- HA & failovers conf / replicas management
+The two Stackdriver components that are used with unmanaged databases.
+Instances have built-in monitoring (CPU, RAM, I/O metrics) and logging (audit logs...)
+
+You should install: 
+- Stackdriver Monitoring (perf) 
+- and Stackdriver Logging (apps / db logs) agents.
+
+MySQL & PostgreSQL require a specific plug-in.
+
+
+
+# Managed Databases
+
+Does not require administaration & operational support. Google'll take careof core opetaional tasks including scaling.
 
 
 ## Cloud SQL
