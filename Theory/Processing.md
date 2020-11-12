@@ -31,12 +31,24 @@ Processing starts with data collection and ends with exploration & visualization
     - managed service : Google maintains the cluster, the kube's installation & conf on instance groups
     - kube is deployed on a cluster of servers
     - pro : 
+        - users can precisely tune the allocation of resources to each container. 
+        - For apps designed as a set of microservices. App components separated into microservices in their own containers : easier to allocate resources & to maintain
+        - allow mlutiple env : other cloud provider & on-prem
     - cons : 
-    
-### App Engine
+        - microservices should have the same liefcycle (maintenance can disrupt other microservices)
+        - apps must be containerized
 
+### App Engine
+    - PaaS
+    - allow devs to focus an app development.
+    - 2 versions :
+        - Standard: serverless environnement, support Go, Java? PHP, Nodejs & Python.
+        - Flexible: runs Docker containers & allows devs to customize their runtime env --> avantage  of a PaaS with flexibility
 
 ### Cloud Functions
+    - serverless, managed compute service
+    - for running code in response to events that occur in the cloud. Writing a msg to a Cloud Pub/Sub or uploading files can triger the execution of a Cloud Function
+    - Funcs are coded in JavaScript, Python 3 & Go
 
 
 
@@ -45,8 +57,7 @@ x       | Structured        | Semi-structured           | Unstructured  |
 --------| ------------- |-------------| -----|
 schema  | fixed      |  attributes can vary | no defined |
 flexibiity / search   | low/easy      | good compromise      |   high/difficult |
-scalibity   | difficult | feasible      |    easy |
-examples   | tables, Sheets, SQL, customer data, phone records, transaction history | JSON, text with an apparent pattern, XML      |    text (NLP), audio, video files, BLOBs |
+
 
 
 ## Decision tree

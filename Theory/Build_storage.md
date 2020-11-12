@@ -170,7 +170,7 @@ fffffffffffffffffffffffffffffffffffffffffffffff
 
 ## Cloud Memorystore
 
-1. Characteristics
+### 1. Characteristics
     - a managed Redis service, you should still monitor : memory usage, duration periods of memory overload, cache-hit ratio & the number of expirable keys
     - commonly used for caching
     - Configuration (creation with the Cloud Console or gcloud commands) :
@@ -183,9 +183,9 @@ fffffffffffffffffffffffffffffffffffffffffffffff
     - High Availability / Instance tier : basic (not HA) or standard (failover replica in a different zone)
     - Good Practice : to avoid memory pressure, scale up, lower the max memory limit, modify eviction policy, set time-to-live TTL parameters on volatile key (how long it's kept before becoming leigible for eviction), or manually delete data.
     
-2. Read performance Improvement
+### 2. Read performance Improvement
 
-3. Import & export
+### 3. Import & export
     - in beta
     - export = backup file of the cache in a Cloud Storage bucket.
         
@@ -194,7 +194,7 @@ fffffffffffffffffffffffffffffffffffffffffffffff
 
         During import : instance unavailable for I/O
 
-4. Scaling (to use more or less mem)
+### 4. Scaling (to use more or less mem)
     - Basic Tier : I/O are blocked. When resizing is over: all data is flushed 
     - Standard Tier: can scale while continuing to support I/O : the replica is resized first and then synchronized with the primary. The primary then fails over.
     - over 80% = memory pressure => scale up
