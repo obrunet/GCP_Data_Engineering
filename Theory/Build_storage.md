@@ -1,13 +1,13 @@
 # Buidling & Operationalizing Storage Systems
 
-- [Cloud SQL](Theory/Build_storage.md#cloud-sql)
-- [Cloud Spanner](Theory/Build_storage.md#cloud-spanner)
-- [Cloud Bigtable](Theory/Build_storage.md#cloud-bigtable)
-- [Cloud Firestore](Theory/Build_storage.md#cloud-firestore)
-- [BigQuery](Theory/Build_storage.md#bigquery)
-- [Cloud Memorystore](Theory/Build_storage.md#cloud-memorystore)
-- [Cloud Storage](Theory/Build_storage.md#cloud-storage)
-- [Retention & lifecycle management](Theory/Build_storage.md#)
+- [Cloud SQL](Build_storage.md#cloud-sql)
+- [Cloud Spanner](Build_storage.md#cloud-spanner)
+- [Cloud Bigtable](Build_storage.md#cloud-bigtable)
+- [Cloud Firestore](Build_storage.md#cloud-firestore)
+- [BigQuery](Build_storage.md#bigquery)
+- [Cloud Memorystore](Build_storage.md#cloud-memorystore)
+- [Cloud Storage](Build_storage.md#cloud-storage)
+- [Retention & lifecycle management](Build_storage.md#retention--lifecycle-management)
 
 
 # Unmanaged Databases
@@ -134,14 +134,39 @@ Does not require administaration & operational support. Google'll take careof co
     all operation are atomic at the row level, not a transaction level
 
 3. Import & export
+fffffffffffffffffffffffffffffffffffffffffffffff
 
 ## Cloud Firestore
 
+1. Characteristics
+    - fully managed???
+    - relational DB : ??
+    - Configuration : ??
 
+    - Backup : ??
+    - High Availability 
+
+    - Good Practice : ??
+    
+2. Read performance Improvement
+
+3. Import & export
 
 ## BigQuery
 
+1. Characteristics
+    - fully managed???
+    - relational DB : ??
+    - Configuration : ??
 
+    - Backup : ??
+    - High Availability 
+
+    - Good Practice : ??
+    
+2. Read performance Improvement
+
+3. Import & export
 
 ## Cloud Memorystore
 
@@ -212,25 +237,32 @@ Does not require administaration & operational support. Google'll take careof co
 - Nearline : access once a month
 - Coldline : access once a year
 
-## Retention & lifecycle management
+# Retention & lifecycle management
 
 Lifecycle = creation, active use, infrequent access but kept oneline, archived, deleted (not all steps are mandatory)
-The choice of the storage system impacts how policies are implemented. 
+
+__The choice of the storage system impacts how policies are implemented.__
+Policies can be used to move objects from Nearline to Coldline storage after some period of time. When partitioned tables are used in BigQuery, partitions can be deleted without affecting other partitions or running time-consuming jobs that scan full tables for data that should be deleted.
+
+__How frequently & how fast the data must be accessed:__
+- submillisecond access time : use cache / Cloud Memorystore
+
+- frequent access with updates & persistent storage : use a database, based on the structure : relational or NoSQL (flexible) ? 
+- if data is less likely to be accessed the older it gets : use time-partitioned tables (if supported by the db). In BigQuery & Bigtable tables can be organized by time as well.
+
+- infrequent access &  query language not required : Cloud Storage.
+    - Data can be exported from a db & stored in Cloud Storage. 
+    - If needed, it can be re-imported back into the db for querying it
+
+- Not likely to be accessed but must still be stored : Coldline storage in Cloud Storage (less expensive than multi-regional, regional, or Nearline)
+
+With Cloud Storage :
+1. __Lifecycle management__ based on policies, the way that objects are stored is changed automatically. These rules
+    - are assigned to buckets & apply to / manipulates objects in those buckets.
+    - implement lifecycle actions (deletion, setting the storage class...)
+    - can be triggered based on the age of the object, its creation, the versions number &  its storage class
+
+2.__Retention policies__ : it uses the Bucket Lock feature to enforce object retention, to ensure that any object in the bucket wil not be deleted until they reach the specified age (useful for compliance with gov. or industry regulations.
 
 
 
-![Example](pictures/decision_tree.svg "Example")
-
-1. Characteristics
-    - fully managed???
-    - relational DB : ??
-    - Configuration : ??
-
-    - Backup : ??
-    - High Availability 
-
-    - Good Practice : ??
-    
-2. Read performance Improvement
-
-3. Import & export
