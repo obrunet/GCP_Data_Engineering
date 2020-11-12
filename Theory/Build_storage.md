@@ -1,12 +1,13 @@
 # Buidling & Operationalizing Storage Systems
 
-- [Cloud SQL]()
-- [Cloud Spanner]()
-- [Cloud Bigtable]()
-- [Cloud Firestore]()
-- [BigQuery]()
-- [Cloud Memorystore]()
-- [Cloud Storage]()
+- [Cloud SQL](Theory/Build_storage.md#cloud-sql)
+- [Cloud Spanner](Theory/Build_storage.md#cloud-spanner)
+- [Cloud Bigtable](Theory/Build_storage.md#cloud-bigtable)
+- [Cloud Firestore](Theory/Build_storage.md#cloud-firestore)
+- [BigQuery](Theory/Build_storage.md#bigquery)
+- [Cloud Memorystore](Theory/Build_storage.md#cloud-memorystore)
+- [Cloud Storage](Theory/Build_storage.md#cloud-storage)
+- [Retention & lifecycle management](Theory/Build_storage.md#)
 
 
 # Unmanaged Databases
@@ -181,16 +182,41 @@ Does not require administaration & operational support. Google'll take careof co
     - fully managed __???????????????__
     - object storage system : files are treated as atomic, no presumed structure within the file that can be exploited to access a specific part of it.
     - for persisting unstructured data (files, images, videos, backup files)
-    - Configuration : ??
-
-    - Backup : ??
-    - High Availability 
-
-    - Good Practice : ??
+    - use cases : 
+        - Storage of data shared among multiple instances does does not need to be on persitent attached storage (log files)   
+        - Backup and archival
+        - Staging area (uploaded files) a Cloud Function can trigger the next step  
+    - Configuration, backup & HA : see below
     
-2. Read performance Improvement
+2. Objects organization in Namespace
+- CS uses bucket = a group of objects that share access controls. Individual objects within buckets can have thier own access controls as well.
+- CS uses a global namespace for bucket names.
+    - All bucket names must have unique names
+    - Object names do not have to be unique.
+    - A bucket is named at creation & can not be renamed (or copy to a new bucket with desired name & delete the old one)
+- Suggestions for bucket naming :
+    - no personnal infos for security reasons
+    - follow DNS naming conventions
+    - use GUIDs
+    - do not use sequential names or timstamps (to avoid hotspots)
+    - can also be subdomain names
+- no use of filesystem = no ability to navigate a path through a hierachy of dirs & files. Otherwise use Cloud Storage FUSE open source project (provides a mechanism to map from object storage systems to filesystems)
 
-3. Import & export
+3. Four storage tiers or storage types
+- Regional : copies an object in multiple zones in one regions
+- Multi-regional : stores replicas of objects in mutiple regions (can improve access time & latency)
+    
+    2 network tiers
+    - Standard : data routed ebtween ergions using public internet infra
+    - Premium : data routed over Google's global high-speed network.
+- Nearline : access once a month
+- Coldline : access once a year
+
+## Retention & lifecycle management
+
+Lifecycle = creation, active use, infrequent access but kept oneline, archived, deleted (not all steps are mandatory)
+The choice of the storage system impacts how policies are implemented. 
+
 
 
 ![Example](pictures/decision_tree.svg "Example")
