@@ -1,7 +1,7 @@
 # Buidling & Operationalizing Processing Infrastructure
 
-- [Provisioning & Adjusting Resources](Build_storage.md#cloud-sql)
-- [Monitoring Processing Resources](Build_storage.md#cloud-sql)
+- [Provisioning & Adjusting Resources](Build_infa.md#provisioning--adjusting-resources)
+- [Monitoring Processing Resources](Build_infa.md#monitoring-processing-resources)
 
 Server-based resources require you to specify VMs or clusters
 
@@ -9,15 +9,15 @@ Serverless resources do not require you those specification but  still require s
 
 # Provisioning & Adjusting Resources
 
-The server-based service described here are
-- Compute Engine
-- Kube Engine
-- Cloud Bigtable
-- Cloud Dataproc
-- Cloud Dataflow
-The serverless services covered here are
-- App engine
-- Cloud Functions
+    The server-based service described here are
+    - Compute Engine
+    - Kube Engine
+    - Cloud Bigtable
+    - Cloud Dataproc
+    - Cloud Dataflow
+    The serverless services covered here are
+    - App engine
+    - Cloud Functions
 
 
 
@@ -79,15 +79,50 @@ using either the cloud console, the command line or REST API
 ### Adjusting resources - two ways
 - __Autoscaling applications__
 
-    sdfsf
+__TO BE CONTINUED__
 
 - __Autoscaling clusters__
 
+__TO BE CONTINUED__
+
+### YAML Configuration
+__TO BE CONTINUED__
+
+
 
 ## Cloud Bigtable
+
+a managed wide-column NoSQL db used for high-volume, low-latency I/O (IoT) & 
+for analytic/ML use cases with an HBase interface.
+### Provisioning
+using the lcoud console, command-line SDK & REST API
+- instance name & ID
+- instance type (PROD or DEV), storage type (HDD or SSD)
+- cluster specifications
+    - name
+    - region & zone
+    - nb of nodes
+- can be changed afterward
+    - the nb of nodes
+    - the nb of clustes
+    - app profiles (contains replicatin settings)
+    - labels used to specify metafata attributes
+### Replication
+- supports up to 4 replicated clusters
+- 
+
 ## Cloud Dataproc
+
+
+
 ## Cloud Dataflow
+
+
+
 ## App engine
+
+
+
 ## Cloud Functions
 
 # Monitoring Processing Resources

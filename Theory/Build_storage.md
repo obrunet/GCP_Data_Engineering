@@ -116,7 +116,7 @@ Does not require administaration & operational support. Google'll take careof co
 
 1. Characteristics
     - managed service but not a NoOps service like Cloud SQL or Cloud Spanner
-    - wide-column NoSQL DB used for high-volume DB that require low latency (few ms) IoT, time-series, finance... 
+    - wide-column NoSQL DB used for high-volume DB that require low latency (few ms) IoT, time-series, finance, analytics, ML... 
     - Configuration :
         - instance name & Id, pw
         - storage type (HDD or SSD)
