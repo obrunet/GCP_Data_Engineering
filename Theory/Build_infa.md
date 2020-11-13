@@ -108,21 +108,66 @@ using the lcoud console, command-line SDK & REST API
     - app profiles (contains replicatin settings)
     - labels used to specify metafata attributes
 ### Replication
-- supports up to 4 replicated clusters
-- 
+- supports up to 4 replicated clusters in their own zones (increase app latency but good for HA & read performances)
+- eventual consistency : write ops are replicted across all clusters using a primary-primary conf
+    - Or use _read-your-wirete consistency_ so that your app will not read data older tahn their lates writes.
+    - Or _strong consitency_ routes all traffic to the same cluster configured with _read-your-wirete consistency_. Other clusters are used for failover.
+
+
 
 ## Cloud Dataproc
+
+a managed Hadoop & Spark service. 
+### Provisioning
+configuration using the cloud console, the command-line SDK, or the REST API:
+- name
+- region & zone
+- mode : 
+    - standard (1 msater & some nb of workers) 
+    - or single (1 master / no worker), 
+    - HA (3 masters), 
+- masters & workers are configured separately, for each : machine types
+- autoscaling policy
+
+Afterward:
+- you can adjust the nm of worker nodes, including the nb of preemptible worker nodes. It can also be done automatically : the autoscalling policy specifies the max nb & scale up/down rates
+- the nb of masters cannot be modified
+
 
 
 
 ## Cloud Dataflow
 
+Executes streaming  & batch apps as an Apache Beam runner. 
 
+Pipeline options when you run a Cloud Dataflow program:
+- Job name & Project ID
+- Runner = a DataflowRunner for cloud execution
+- Staging locations = a path to a Cloud Storage location for code packages
+- Temporary location for temporary job files
+- Default & max nb of workers
+- In option : dsik size & machine type (Compute Engine)
 
 ## App engine
+PaaS serverless (no need to provision instances), however parameters configuration for the runtime environement :
+- app.yaml : 3 required param (runtime, handlers & threadsafe)
+- cron.yaml : configuration of the scheduled tasks for an app
+- dispatch.yaml : routing rules to send incoming request to a specific service
 
 
 
 ## Cloud Functions
+
+serverless service that runs code in response to events in Google Cloud.
+
+Specification of the code to run & options:
+- memory
+- timeout
+- region where the func is executed
+- max-instances : nb of func instances that will exist at any one time.
+- amount of memory allocated to a func (from 128 MB to 2 GB).
+- timeout from 1 (by default) to 9 min.
+
+
 
 # Monitoring Processing Resources
