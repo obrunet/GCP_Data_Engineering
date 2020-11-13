@@ -9,12 +9,12 @@ will be updated later
 # Contents
 
 ## Theory
-0. [All Services](Theory/Components.md)
-1. [Selection of the appropriate Storage Technology](Theory/Storage.md)
-2. [Build a Storage System & Operations](Theory/Build_storage.md)
-3. [Design Data Pipelines](Theory/Pipelines.md)
-4. [Data Processing Solutions](Theory/Processing.md)
-5. [Build an Instrastructure & Operations](Theory/Build_infra.md)
+0. [All Services](Theory/Components.md) __TO BE CONTINUED__
+1. [Selection of the appropriate Storage Technology](Theory/Storage.md) __TO BE CONTINUED__
+2. [Build a Storage System & Operations](Theory/Build_storage.md) __TO BE CONTINUED__
+3. [Design Data Pipelines](Theory/Pipelines.md) __TO BE CONTINUED__
+4. [Data Processing Solutions](Theory/Processing.md) __TO BE CONTINUED__
+5. [Build an Instrastructure & Operations](Theory/Build_infra.md) __TO BE CONTINUED__
 6. Security & Compliance
 7. Reliability, Scalability & Availability
 8. Flexibility & Portability

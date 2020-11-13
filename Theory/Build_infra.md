@@ -1,7 +1,7 @@
 # Buidling & Operationalizing Processing Infrastructure
 
-- [Provisioning & Adjusting Resources](Build_infa.md#provisioning--adjusting-resources)
-- [Monitoring Processing Resources](Build_infa.md#monitoring-processing-resources)
+- [Provisioning & Adjusting Resources](Build_infra.md#provisioning--adjusting-resources)
+- [Monitoring Processing Resources](Build_infra.md#monitoring-processing-resources)
 
 Server-based resources require you to specify VMs or clusters
 
@@ -23,7 +23,7 @@ Serverless resources do not require you those specification but  still require s
 
 ## Compute Engine
 
-Can be configured using individual VMs or instance groups. The others are configured as clusters of VMs, sometimes with VMs taking ond different roles within the cluster. 
+Can be configured using individual VMs or instance groups. The others are configured as clusters of VMs, sometimes with VMs taking on different roles within the cluster. 
 Instance groups are either managed or unmanaged. Your should prefer MIGs (identically configured VMs) unless you need heterogeneous VMs.
 ### Provisionning a single instance
 from the cloud console, the command-line SDK or REST API
@@ -59,16 +59,29 @@ Containers have less overhead than VMs & allow for finer-grained allocation of r
     - the __scheduler__ is responsible for determining where to run pods (lowest schedulable unit)
     - the __etcd__ service is a distributed key/value store to state info across a cluster
 - the nodes execute workloads (Compute Engine VMs run within MIGs), communicate with the master throught an agent : _kubelet_
-### Abstractions:
-- Pods
-- Services
-- ReplicaSets
-- Deployments
-- PersistentVolumes
-- StatefulSets
-- Ingress
-
-__TO BE CONTINUED__
+### Abstractions (facilitate the management of containers, applications, and storage)
+- __Pods__ : 
+    - the smallest computation unit, contain one (usually) or multiple containers(if functionally related & have similar scaling and lifecycle)
+    - deployed to nodes by the scheduler (usually in groups or replicas for HA)
+    - are ephemeral, terminated if not functioning properly (without disrupting the service) then replaced
+    - their nb vary according to load / scaling
+- __Services__ :
+    - a stable API endpoint with stable IP address
+    - app that need to use a service communicate with the API endpoints. 
+    - keeps track of its associated pods to route calls to them
+- __ReplicaSets__ : 
+    - a controller that manages the nb of pods running for a deployment
+    - will add or remove (unhealthy) pods until the desired state is reached
+- __Deployments__ :
+    - a higher-level concept that manages ReplicaSets and provides declarative updates  
+    - pods in the same deployment are created with the same template
+- __PersistentVolumes__
+    - decoupling pods (computation) from persistent storage (pods are ephemeral)
+    - storage allocated or provisioned for use by a pod
+- __StatefulSets__: abstraction used to designate pods as stateful
+- __Ingress__:
+    - an object that controls external access to services of a cluster
+    - must be running in that cluster
 ### Provisioning
 using either the cloud console, the command line or REST API
 - cluster name
@@ -79,14 +92,23 @@ using either the cloud console, the command line or REST API
 ### Adjusting resources - two ways
 - __Autoscaling applications__
 
-__TO BE CONTINUED__
+User specifies how many replicas of an application should run. When demand for a service increases/decreases, replicas can be added/removed.
+
+        - kubectl command to manually adjust the nb of replicas OR
+        - kubectl autoscale command to autoscale
 
 - __Autoscaling clusters__
 
-__TO BE CONTINUED__
+Adjust the number of nodes in a node pool (nodes are implemented as Compute Engine VMs & node pools as MIG)
+
+    - based on resource requests, not actual utilization.
+    - the autoscaler will add/remove nodes in the pool according to the max/min nb
+    - by default, GKE assumes that all pods can be restarted on other nodes. Otherwise (app not tolerant to brief disruptions) do not use cluster autoscaling
+    - for a cluster in multiple zones, the autoscaler tries to keep instance groups/types balanced when scaling up
 
 ### YAML Configuration
-__TO BE CONTINUED__
+Kube makes extensive use of YAML files that contain configuration infos (cluster resources, deployment...)
+Pro of a managed GKE service : those configuration files are generated for you when using command-line & cloud console commands.
 
 
 
@@ -136,7 +158,6 @@ Afterward:
 
 
 ## Cloud Dataflow
-
 Executes streaming  & batch apps as an Apache Beam runner. 
 
 Pipeline options when you run a Cloud Dataflow program:
