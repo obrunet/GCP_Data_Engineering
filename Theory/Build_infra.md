@@ -135,7 +135,6 @@ Afterward:
 
 
 
-
 ## Cloud Dataflow
 
 Executes streaming  & batch apps as an Apache Beam runner. 
@@ -157,10 +156,7 @@ PaaS serverless (no need to provision instances), however parameters configurati
 
 
 ## Cloud Functions
-
-serverless service that runs code in response to events in Google Cloud.
-
-Specification of the code to run & options:
+serverless service that runs code in response to events in Google Cloud. No need to provision instances, however specification of the code to run & options:
 - memory
 - timeout
 - region where the func is executed
@@ -171,3 +167,31 @@ Specification of the code to run & options:
 
 
 # Monitoring Processing Resources
+both the resources & the app performance
+## Stackdriver Monitoring
+- collects metrics on the performance of infrastructure (GCP or AWS) & apps. 
+- more than 1,000 metrics, which vary by service type:
+    - App Engine: VMs utilization, active connections, total nb of reserved cores.
+    - Compute Engine: capacity & current utilization
+    - BigQuery: query counts, execution times, scanned bytes, and table count.
+    - Cloud Bigtable: CPU & disk load, node count, bytes used, and storage capacity.
+    - Cloud Functions: active instances, execution count & times
+- can be viewed on dashboards & used for alerting
+## Stackdriver Logging
+- stores and searches log data about events in infrastructure and more than 150 common apps
+- a log entry = a record about some event, created by an app, an OS or middleware, or other service. log = collection of log entries.
+- the retention period varies by log type (admin activity, system, access, data access)
+- search with a query language (pattern matching & boolean expr for filtering)
+### Stackdriver Trace
+- a distributed tracing system designed to collect data on how long it takes to process requests to services. 
+- useful for microservices
+- available in Compute Engine, Kubernetes Engine, and App Engine.
+
+2 main components
+- a client that collects data and sends it to GCP
+- a UI to view & analyze the trace data:
+    - Performance insights
+    - Recent traces & times
+    - Most frequent URIs
+    - Daily analysis reports
+    - A list to view traces in detail
