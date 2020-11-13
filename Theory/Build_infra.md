@@ -99,11 +99,10 @@ User specifies how many replicas of an application should run. When demand for a
 
 - __Autoscaling clusters__
 
-Adjust the number of nodes in a node pool (nodes are implemented as Compute Engine VMs & node pools as MIG)
+Adjust the number of nodes in a node pool (nodes are implemented as Compute Engine VMs & node pools as MIG). By default, GKE assumes that all pods can be restarted on other nodes. Otherwise (app not tolerant to brief disruptions) do not use cluster autoscaling
 
     - based on resource requests, not actual utilization.
     - the autoscaler will add/remove nodes in the pool according to the max/min nb
-    - by default, GKE assumes that all pods can be restarted on other nodes. Otherwise (app not tolerant to brief disruptions) do not use cluster autoscaling
     - for a cluster in multiple zones, the autoscaler tries to keep instance groups/types balanced when scaling up
 
 ### YAML Configuration
