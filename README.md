@@ -1,10 +1,17 @@
 # GCP Data Engineering
-In a nutshell everything you need to know / to learn to do in order to prepare the GCP Profesionnal Data Engineer Certification
+A Professional Data Engineer enables data-driven decision making by collecting, transforming, and publishing data. A Data Engineer should be able to design, build, operationalize, secure, and monitor data processing systems with a particular emphasis on security and compliance; scalability and efficiency; reliability and fidelity; and flexibility and portability. A Data Engineer should also be able to leverage, deploy, and continuously train pre-existing machine learning models.
 
 ![Example](Theory/pictures/GCP_logo.png "Example")
 
+The GCP Professional Data Engineer exam assesses your ability to:
+- Design data processing systems
+- Build and operationalize data processing systems
+- Operationalize machine learning models
+- Ensure solution quality
+
 # Introduction
-will be updated later
+In the __Theory__ chapter are presented my personnal notes that summerize everything one need to know in order to get prepared for this exam/certification.
+Then in the __Practice__ section, you'll find all the capstone projects i've accomplished to master the different GCP components.
 
 # Contents
 
@@ -14,9 +21,9 @@ will be updated later
 2. [Build a Storage System & Operations](Theory/Build_storage.md) __TO BE CONTINUED__
 3. [Design Data Pipelines](Theory/Pipelines.md) __TO BE CONTINUED__
 4. [Data Processing Solutions](Theory/Processing.md) __TO BE CONTINUED__
-5. [Build an Instrastructure & Operations](Theory/Build_infra.md) __TO BE CONTINUED__
+5. [Build an Instrastructure & Operations](Theory/Build_infra.md)
 6. Security & Compliance
-7. Reliability, Scalability & Availability
+7. [DB - Reliability, Scalability & Availability](Theory/DB_scale.md)
 8. Flexibility & Portability
 9. ML Pipelines
 10. Choosing the Appropriate Insfrastructure
@@ -26,7 +33,8 @@ will be updated later
 
 
 ## Practice
-will be updated later
+- will be updated later
+- GCP solutions
 
 ## Tips for the exam
 will be updated later
