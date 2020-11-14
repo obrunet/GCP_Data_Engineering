@@ -68,14 +68,15 @@ Different storage systems for different purposes, the choice is determined by th
 
 2. Semi-structured = doesn't follow a fixed tabular format and instead stores schema attributes along with the data (set of attributes can vary from one instance to another). Allow users to add attributes without changing the schema. 2 ways of storing: documents or as wide columns (distinction is how data is retrieved)
     - Fully indexed (Cloud Datastore)
-```- Indexes are created on each of the attributes as well as a combination of attributes.
-- A large number of indexes can significantly increase the amount of storage used (the total index storage can be greater than the amount of storage used to store documents). 
-- Additional indexes can negatively impact performance for insert, update, and delete operations because they need to be revised```
+
+        - Indexes are created on each of the attributes as well as a combination of attributes.
+        - A large number of indexes can significantly increase the amount of storage used (the total index storage can be greater than the amount of storage used to store documents). 
+        - Additional indexes can negatively impact performance for insert, update, and delete operations because they need to be revised
 
     - Row-key access : wide-column DBs organize data so that rows with similar row keys are close together. Queries use a row key, which is analogous to a primary key in relational DBs, to retrieve data:
-```
-- tables are designed to respond to particular queries (although relational DBs are designed according to forms of normalization that minimize the risk of data anomalies, wide-column DBs are designed for low-latency R/W at high volumes.
-- can lead to duplication of data```
+
+        - tables are designed to respond to particular queries (although relational DBs are designed according to forms of normalization that minimize the risk of data anomalies, wide-column DBs are designed for low-latency R/W at high volumes.
+        - can lead to duplication of data
 
 3. Unstructured = doesn't have a defined schema or data model & may have an internal structure that is not relevant to the way it is stored.
 
