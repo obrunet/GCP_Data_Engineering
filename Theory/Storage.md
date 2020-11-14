@@ -80,9 +80,10 @@ Different storage systems for different purposes, the choice is determined by th
 
 3. Unstructured = doesn't have a defined schema or data model & may have an internal structure that is not relevant to the way it is stored.
 
+### Comparison
 
 x       | Structured        | Semi-structured           | Unstructured  |
---------| ------------- |-------------| -----|
+--------|-------------|-------------|-------------|
 schema  | fixed      |  attributes can vary | no defined |
 flexibiity / search   | low/easy      | good compromise      |   high/difficult |
 scalibity   | difficult | feasible      |    easy |
@@ -92,7 +93,6 @@ examples   | tables, Sheets, SQL, customer data, phone records, transaction hist
 ## Decision tree
     
 ![Example](pictures/decision_tree.svg "Example")
-
 
 
 ## Schemas for relational & NoSQL db
@@ -108,13 +108,26 @@ Structured data is usually stored in relational db, whereas semi-structured ones
         - rolling up & aggregatins data
         - drilling down from summary data to detailed one
         - pivoting & looking at data from different dimensions (slicing & dicing)
-2. NoSQL DB design
-    - Key-value : __TO BE CONTINUED__
-    - Document : __TO BE CONTINUED__
-    - Wide colum : __TO BE CONTINUED__
-    - Graph : __TO BE CONTINUED__
+2. NoSQL DB design - each type is suited for different use cases (ingestion, entity relationships & query requirements):
+    - Key-value (Cloud Memorystore / Redis):
+        - use associative arrays or dictionaries as the basic datatype
+        - keys are used to look up values
+        - values can be complex data structures for such as a JSON object 
+        - if items should be searchable: a document database is a better option
+    - Document (Cloud Datastore, MongoDB, CouchDB & OrientDB):
+        - allow complex data structures called documents, 
+        - documents are used as values & accessed in more ways than simple key lookup
+        - documents should be designed to group data that is read together
+
+    - Wide colum (Bigtable, HBase, Cassandra) :
+        - use cases: high volumes, low-latency writes, more W than R
+        - limited range of queries ie no ad hoc queries
+        - lookup by a single key
+        - model similar to the tabular structure of relational tables with differences: Wide-column DBs are often sparse (exception of IoT & time-series DBs)
+    - Graph : (No managed graph DBs in GCP, Neo4j) :
+        - based on modeling entities and relationships 
+        - use case : social networks
+        - people = nodes in the graph/network & relationships = links/ edges
 
 
-
-## SQL language in a nutshell
-__TO BE CONTINUED__
+## SQL language - [MySQL cheatsheet](https://devhints.io/mysql)
