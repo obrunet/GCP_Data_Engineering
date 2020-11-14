@@ -2,7 +2,7 @@
 
 - [Cloud Bigtable](DB_scale.md#cloud-bigtable-db---scalability--reliability)
 - [Cloud Spanner](DB_scale.md#cloud-spanner-db-for-scalability--reliability)
-- [Cloud BigQuery](DB_scale#monitoring-processing-resources)
+- [Cloud BigQuery](DB_scale.md#bigquery-dbs-for-data-warehousing)
 
 Cloud SQL which does not scale beyound the region level is not covered here.
 
@@ -187,9 +187,25 @@ tables can be partitioned by:
 - supported only on partitioned tables & used when filters or aggregations are frequently used.
 
 ## Querying data
+- BQ supports the use of parameterized queries (specified by an @param_name)
+- BQ can query multiple tables at once (using the wildcard * in a table name)
 
+2 types of queries: 
+- interactive - by default - executed immediately 
+- batch : queued up & run when resources are available (pro: resources are drawn from a shared resource pool and batch queries do not count) 
 
 ## External data access
+Instead of first loading data into BQ, you can create a reference to an external source (known as federated sources) such as 
+- Cloud Bigtable
+- Cloud Storage
+- Google Drive
 
+You can create either permanent or temporary (available for 24 hrs, useful for one-time operations) external tables
 
 ## BigQuery ML
+This allows users to build ML models in BigQuery rather than programming models & supports atm :
+- Linear regression
+- Binary logistic regression
+- Multiclass logistic regression
+- K-means clustering
+- TensorFlow models
