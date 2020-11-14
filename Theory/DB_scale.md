@@ -1,7 +1,7 @@
 # DB Design Databases for Reliability, Scalability, and Availability
 
-- [Cloud Bigtable](DB_scale#provisioning--adjusting-resources)
-- [Cloud Spanner](DB_scale#monitoring-processing-resources)
+- [Cloud Bigtable](DB_scale.md#cloud-bigtable-db---scalability--reliability)
+- [Cloud Spanner](DB_scale.md#cloud-spanner-db-for-scalability--reliability)
 - [Cloud BigQuery](DB_scale#monitoring-processing-resources)
 
 Cloud SQL which does not scale beyound the region level is not covered here.
@@ -79,23 +79,96 @@ Bigtable supports up to 4 replicated regional or multi-regional clusters:
 
 
 # Cloud Spanner DB for Scalability & Reliability
-Cloud Spanner is a globally scalable relational database that offers many of the scalability benefits once limited to NoSQL databases. It does so while maintaining key features of relational databases, such as support for normalized data models and transaction support. Data engineers need to understand factors that influence the performance of Cloud Spanner databases in order to avoid design choices that can limit performance and scalability.
+- a globally scalable relational DB with the scalability benefits once limited to NoSQL db. 
+- maintains key features of relational db: support for normalized data models & transaction 
+Factors that influence Cloud Spanner databases performance:
 
-For the purposes of the Cloud Professional Data Engineer exam, it is important to understand several aspects of Cloud Spanner, including
+## Relational DB Features
+Its data model is centered around tables, which are composed of columns(attributes) & rows(values for attributes). Relational DBs are strongly typed. 
 
-Relational database features
-Interleaved tables
-Primary keys and hotspots
-Database splits
-Secondary indexes
-Query best practices
-Relational Database Features
-Many of Cloud Spanner features are common to other relational databases. The data model is centered around tables, which are composed of columns that represent attributes and rows that are collections of values for attributes about a single entity. For example, an e-commerce application may have tables about customers, orders, and inventory, with rows representing a single customer, order, and inventory item, respectively. The customer table may have columns such as customer name, address, and credit limit, whereas the order table may have an order ID, date of order, customer ID, and total value of the order. An inventory table could have columns with product names, quantity, and location of the item in a warehouse.
+Cloud Spanner supported types:
 
-Relational databases are strongly typed. Cloud Spanner supports the following types:
+```Array / Bool / Bytes / Date / Float64 / INT64 / String / Struct / Timestamp```
 
-Array: An ordered list of zero or more elements of a non-array type
-Bool: Boolean TRUE or FALSE
-Bytes: Variable-length binary data
-Date: A calendar date
+Spanner supports both primary (automatically created) & secondary indexes(other columns or combinations of cols). This reduces the need to denormalize & duplicate data to support multiple query patterns (such as in Cloud Bigtable)
+
+## Interleaved Tables
+Interleaving data from related tables is
+- done through a parent-child relationship: 
+    - parent data (a row of an other table) is stored with child data)
+    - retrieving data simultaneously from both tables is more efficient than when stored separately 
+- used for tables frequently joined: by storing the related data together, joins can be performed with fewer I/O ops and seeks than if stored independently
+
+## Primary Keys & Hotspots
+- horizontally scalable (Spanner shares some characteristics with Bigtable)
+- uses multiple servers: data is divided among servers by key range (potential for hotspots)
+Monotonically increasing keys, for example, can cause R/W ops to happen in a few servers at once instead of being evenly distributed
+
+Recommandations :
+
+- using a hash of the natural key (not recommended with Cloud Bigtable, but meaningless keys are regularly used in relational db)
+- swapping the order of Columns in Keys
+- using a UUID v4+
+- using bit-revers sequential values
+
+## Database splits
+Cloud Spanner breaks data into chunks known as splits. A split is a range of rows (not an interleaved part of another table) ordered by primary key up to 4 GB. 
+If Cloud Spanner detects a large number of R/W ops on a split, it will divide the rows into two splits so that they can be placed on different servers -> distribution to balance the R/W workload across nodes, not just the amount of data.
+
+## Secondary indexes
+An index is automatically created for the primary key.
+You have to define any secondary indexes specifically on columns or groups of columns other than the primary key. Userful for
+- filtering in a query : the index of the column in the WHERE clause is used rather than a full scan of the table 
+- returning rows in a sort order other than the primary key order.
+
+## Query best practices
+### Query Parameters
+Cloud Spanner builds an execution plan (with statistics about the distribution of data, existing secondary indexes...). If the query is repeated with changes to only some filter criteria, no need to rebuild the whole plan each time the query is executed by using parameterized queries.
+### EXPLAIN PLAN to Understand Execution Plans
+a plan = a series of steps designed to retrieve data and respond to a query. Splits are distributed across a cluster: the execution plans have to incorporate local execution of subplans executed on each node. The results are then aggregated.
+### Avoid Long Locks
+When executing a transaction, the db may use locks to protect the integrity of data. When locks should be used:
+- If a write depends on the result of one or more reads
+- If several write operations have to be committed together
+ During a lock, no other processes can modify those rows until the transaction commits or rolls back.
+
+## BigQuery DBs for Data Warehousing
+BigQuery is designed for DW, ML & analytics. It uses standard SQL language but it is not a relational db.
+
+Schema design for DW
+Clustered & partitioned tables
+Querying data
+External data access
+BigQuery ML
+
+### Schema Design for Data Warehousing
+DWing = the practice of creating and using DBs for analytic operations.
+≠ DBs design for transaction processing.
+
+1. Types of Analytical Datastores
+
+    - Data Warehouses = centralized, organized repositories of analytical data for an organization.
+    - Data Marts = subsets of DW that focus on particular business lines or departments.
+    - Data Lakes = less structured data stores for raw and lightly processed data.
+
+    BigQuery is designed to support DW & data marts. For Data lakes: Cloud Storage(object storage) or NoSQL db(Cloud Bigtable).
+
+2. Projects, Datasets & Tables
+
+    At the highest levels, BigQuery data is organized around 
+    - projects: the high-level structure used to organize the use of GCP services & resources(use of APIs, billing & permissions). It contain datasets.
+    - datasets: containers for tables and views. Its location is immutable. Access to tables & views are defined at the dataset level
+    - tables: collections of rows & columns stored in a columnar format, written to the Colossus distributed FS.
+
+    Limitations:
+    - table names within a dataset must be unique.
+    - the copy of a table must be done in the same location.
+    - when merging multiple tables to a single one, all sources must have the same schema
+
+    Supported data types: 
+
+    ``` Array / Bool / Bytes / Date / Datetime / Numeric / Float64 / INT64 / Geography / String / Struct / Time / Timestamp``` 
+
+    Although BigQuery supports joins like DWs, there are pros of denormalizing a data model & storing related data together. Its done with with nested & repeated columns (defined as a RECORD data type & accessed as a STRUCT in SQL).
+
 
