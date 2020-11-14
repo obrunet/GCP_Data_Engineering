@@ -89,6 +89,22 @@ flexibiity / search   | low/easy      | good compromise      |   high/difficult 
 scalibity   | difficult | feasible      |    easy |
 examples   | tables, Sheets, SQL, customer data, phone records, transaction history | JSON, text with an apparent pattern, XML      |    text (NLP), audio, video files, BLOBs |
 
+<style>
+table th:first-of-type {
+    width: 10%;
+}
+table th:nth-of-type(2) {
+    width: 40%;
+}
+table th:nth-of-type(3) {
+    width: 40%;
+}
+table th:nth-of-type(4) {
+    width: 40%;
+}
+</style>
+
+
 
 ## Decision tree
     
