@@ -120,28 +120,28 @@ An index is automatically created for the primary key.
 You have to define any secondary indexes specifically on columns or groups of columns other than the primary key. Userful for
 - filtering in a query : the index of the column in the WHERE clause is used rather than a full scan of the table 
 - returning rows in a sort order other than the primary key order.
-
 ## Query best practices
-### Query Parameters
+1. Query Parameters
+
 Cloud Spanner builds an execution plan (with statistics about the distribution of data, existing secondary indexes...). If the query is repeated with changes to only some filter criteria, no need to rebuild the whole plan each time the query is executed by using parameterized queries.
-### EXPLAIN PLAN to Understand Execution Plans
+
+2. EXPLAIN PLAN to Understand Execution Plans
+
 a plan = a series of steps designed to retrieve data and respond to a query. Splits are distributed across a cluster: the execution plans have to incorporate local execution of subplans executed on each node. The results are then aggregated.
-### Avoid Long Locks
+
+3. Avoid Long Locks
+
 When executing a transaction, the db may use locks to protect the integrity of data. When locks should be used:
 - If a write depends on the result of one or more reads
 - If several write operations have to be committed together
  During a lock, no other processes can modify those rows until the transaction commits or rolls back.
 
-## BigQuery DBs for Data Warehousing
+
+
+# BigQuery DBs for Data Warehousing
 BigQuery is designed for DW, ML & analytics. It uses standard SQL language but it is not a relational db.
 
-Schema design for DW
-Clustered & partitioned tables
-Querying data
-External data access
-BigQuery ML
-
-### Schema Design for Data Warehousing
+## Schema Design for Data Warehousing
 DWing = the practice of creating and using DBs for analytic operations.
 ≠ DBs design for transaction processing.
 
@@ -169,6 +169,27 @@ DWing = the practice of creating and using DBs for analytic operations.
 
     ``` Array / Bool / Bytes / Date / Datetime / Numeric / Float64 / INT64 / Geography / String / Struct / Time / Timestamp``` 
 
-    Although BigQuery supports joins like DWs, there are pros of denormalizing a data model & storing related data together. Its done with with nested & repeated columns (defined as a RECORD data type & accessed as a STRUCT in SQL).
+    Although BigQuery supports joins like DWs, there are pros of denormalizing a data model & storing related data together : it's done with with nested & repeated columns (defined as a RECORD data type & accessed as a STRUCT in SQL).
+
+## Clustered & partitioned tables
+BQ is most cost-efficient when you can minimize the amount of data scanned to retrieve queries. BQ does not have indexes like relational or document DBs
+but it does support:
+
+### Partitioning
+= the process of dividing tables into segments to take advantage of metadata about partitions to determine which of them should be scanned.
+tables can be partitioned by:
+- ingestion time : BQ loads data into a daily partition and creates new partitions each day.
+- timestamp : based on a DATE or TIMESTAMP column in a table --> better performance than sharded tables.
+- integer range :based on a column with an INTEGER data type
+
+### Clustering
+- When a table is clustered, 1 to 4 columns are specified along with an ordering of those columns, you can have data that is frequently accessed together collocated in storage. 
+- supported only on partitioned tables & used when filters or aggregations are frequently used.
+
+## Querying data
 
 
+## External data access
+
+
+## BigQuery ML
