@@ -2,10 +2,10 @@
 
 Sensitive data needs additional. Concepts covered here are :
 
-- [IAM]()
-- [Data security]()
-- [Data loss prevention]()
-- [Compliance]()
+- [IAM](Security_compliance.md#identity--access-management)
+- [Data security](Security_compliance.md#data-security)
+- [Data loss prevention](Security_compliance.md#privacy--data-loss-prevention)
+- [Compliance](Security_compliance.md#legal-compliance)
 
 # Identity & access management
 Cloud IAM
@@ -15,12 +15,12 @@ Cloud IAM
 ## Using Roles with Service Accounts
 ## Access Constrol with Policies
 
-# Using IAM with Storage & Processing Services
+## Using IAM with Storage & Processing Services
 
-## Cloud Storage
-## Cloud Bigtable
-## BigQuery
-## Dataflow
+### Cloud Storage
+### Cloud Bigtable
+### BigQuery
+### Dataflow
 
 # Data Security
 
