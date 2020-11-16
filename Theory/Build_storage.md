@@ -32,7 +32,7 @@ MySQL & PostgreSQL require a specific plug-in.
 
 # Managed Databases
 
-Does not require administaration & operational support. Google'll take careof core opetaional tasks including scaling.
+Does not require administaration & operational support. Google'll take care of core opetaional tasks including scaling.
 
 
 ## Cloud SQL
@@ -71,7 +71,7 @@ Does not require administaration & operational support. Google'll take careof co
 ## Cloud Spanner
 
 1. Characteristics
-    - fully managed __???????????????__
+    - fully managed
     - relational DB with strong consistency
     - Scalable : horizontally
     - Configuration :
@@ -80,10 +80,7 @@ Does not require administaration & operational support. Google'll take careof co
         - Number of nodes (dictated by your workload, keep CPU < 65% a single region and < 45% for multi)
         - machine type (vCPUs, RAM, HDD or SSD)
         - public (by default) or private IP address
-    - Backup : __???????????????__
     - High Availability : yes, but doesn't require failover instance in the same way Cloud SQL does. Automatic replication.
-
-    - Good Practice : __???????????????__
     
 2. Replication
     - Maintains multiple replicas of rows of data in multiple locations (implements globally synchronous replication)
@@ -98,9 +95,9 @@ Does not require administaration & operational support. Google'll take careof co
     - regional instances use only read-only repl, multi-regional instances use all 3
 
 3. DB design & considerations
-    - can have hostposts where many I/O ops are happening on the smae node instead of multiple ones. When using sequentially primary keys (auto-incrementing counters or timestamps) -> Use hash of the sequentially value instead to distribute work.
-    - relational DB are often normalized (you can make joins) __???????????????__
-    Cloud Spanner allow for interleaving data form different talbes (advantage of parent-child relationship between talbes when creating the DB schema) __???????????????__
+    - can have hostposts where many R/W ops are happening on the smae node instead of multiple ones. When using sequentially primary keys (auto-incrementing counters or timestamps) -> Use hash of the sequentially value instead to distribute work.
+    - relational DB are often normalized (ie joins are performed when retrieving data): some time is needed for reading data blocks from 2 ≠ storage areas)
+    Cloud Spanner allows for interleaving data form ≠ tables (advantage of parent-child relationship between talbes when creating the DB schema)
 
 
 3. Import & export
@@ -134,7 +131,7 @@ Does not require administaration & operational support. Google'll take careof co
     all operation are atomic at the row level, not a transaction level
 
 3. Import & export
-fffffffffffffffffffffffffffffffffffffffffffffff
+Like Cloud Spanner, Bigtable import & export ops are performed using Cloud Dataflow. Data can be exported/importaed to Cloud Storage in either Avro or SequenceFile format.
 
 ## Cloud Firestore
 
@@ -198,7 +195,7 @@ fffffffffffffffffffffffffffffffffffffffffffffff
 ## Cloud Storage
 
 1. Characteristics
-    - fully managed __???????????????__
+    - managed
     - object storage system : files are treated as atomic, no presumed structure within the file that can be exploited to access a specific part of it.
     - for persisting unstructured data (files, images, videos, backup files)
     - use cases : 
