@@ -229,13 +229,12 @@ Exports:
         - no charge for loading, copying, or exporting data but for the storage used.
         - separate charges for ML (BQML) & Data Transfer service.
 
-9. Optimization
-optimize the way that you use BigQuery
-- avoid using SELECT *.
-- use --dry-run to estimate the cost of a query.
-- set the maximum number of bytes billed.
-- partition by time when possible.
-- denormalize data rather than join multiple tables.
+9. Optimization - depends on the way you use BQ
+    - avoid using SELECT *.
+    - use --dry-run to estimate the cost of a query.
+    - set the maximum number of bytes billed.
+    - partition by time when possible.
+    - denormalize data rather than join multiple tables.
 
 BQ is a popular: it requires little operational overhead, supports large volumes of data, and is highly performant when queries are tuned to take advantage of its' architecture.
 

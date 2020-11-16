@@ -16,9 +16,9 @@ Then in the __Practice__ section, you'll find all the capstone projects i've acc
 # Contents
 
 ## Theory
-0. [All Services](Theory/Components.md) __TO BE CONTINUED__
+0. [All Services](Theory/Components.md)
 1. [Selection of the appropriate Storage Technology](Theory/Storage.md)
-2. [Build a Storage System & Operations](Theory/Build_storage.md) __TO BE CONTINUED__
+2. [Build a Storage System & Operations](Theory/Build_storage.md)
 3. [Design Data Pipelines](Theory/Pipelines.md) __TO BE CONTINUED__
 4. [Data Processing Solutions](Theory/Processing.md) __TO BE CONTINUED__
 5. [Build an Instrastructure & Operations](Theory/Build_infra.md)
