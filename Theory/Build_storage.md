@@ -109,6 +109,7 @@ Does not require administaration & operational support. Google'll take care of c
         - Location
         - Load & number of nodes
 
+
 ## Cloud Bigtable
 
 1. Characteristics
@@ -132,6 +133,7 @@ Does not require administaration & operational support. Google'll take care of c
 
 3. Import & export
 Like Cloud Spanner, Bigtable import & export ops are performed using Cloud Dataflow. Data can be exported/importaed to Cloud Storage in either Avro or SequenceFile format.
+
 
 ## Cloud Firestore
 
@@ -176,28 +178,73 @@ Exports:
 ## BigQuery
 
 1. Characteristics
-    - managed
-    - relational DB : ??
-    - Configuration : ??
-
-    - Backup : ??
-    - High Availability 
-
-    - Good Practice : ??
+    - fully managed
+    - petabyte-scale, low-cost analytics data warehouse DBs
+    - important service for the Process & Analyze stage of the data lifecycle.
     
-2. Read performance Improvement
+2. Datasets - the basic unit of organization for sharing data in BigQuery:
+    - can have multiple tables
+    - specifications during creation of a dataset:
+        - A dataset ID - name of the dataset
+        - Data location - region
+        - Default table expiration - time to live for the dataset (useful for data kept some period of time and then deleted)
 
-3. Import & export
+3. Queries
 
+    BQ supports two dialects of SQL, legacy and standard (preferred, supports advanced SQL features: correlated subqueries, ARRAY and STRUCT data types, complex join expr).
 
+    Concept of slots for allocating computing resources to execute queries. 
+    - usually the default number of slots is sufficient
+    - for very large queries, many concurrent queries consider additional 
 
+4. Import & export
 
+    Import specifications:
+    - the type of data source (Cloud Storage, an uploaded file, Cloud Bigtable table...)
+    - the data source (URI)
+    - file format : Avro (preferred can be read in ||), CSV, JSON (newline delimited), ORC, or Parquet
+    - destination table (project, dataset, and table name).
+    - Schema(auto-detected or specified in text, or entered one column at a time)
+    - partitioning (none or by ingestion time), if partitioned you can use clustering order (optimizes the way that column data is stored & queries execution)
+
+5. Clustering, Partitioning & and Sharding Tables
+    - In clustered tables, data is automatically organized based on the contents of one or more columns. Related data is collocated, it can improve the performance of some queries with filter on those columns
+    - Clustered tables can be partitioned : to break large tables into smaller ones
+    - Shards can be based on the value in a partition column
+
+6. Streaming Inserts
+
+    BQ load one row at a time, data is generally available within a few sec.
+    (not intended for transactional workloads, but rather analytical ones).
+    Streaming inserts provide best effort de-duplication. 
+
+7. Monitoring and Logging in BigQuery
+
+    See Stackdriver Monitoring & Stackdriver Logging
+
+8. Cost Considerations
+    - based on the amount of data stored, the amount of data streamed, and the workload required to execute queries. 
+    - understand the relative costs in order to choose among different options
+        - no cost advantage to storing long-term data in Cloud Storage unless you were to store it Coldline storage
+        - no charge for loading, copying, or exporting data but for the storage used.
+        - separate charges for ML (BQML) & Data Transfer service.
+
+9. Optimization
+optimize the way that you use BigQuery
+- avoid using SELECT *.
+- use --dry-run to estimate the cost of a query.
+- set the maximum number of bytes billed.
+- partition by time when possible.
+- denormalize data rather than join multiple tables.
+
+BQ is a popular: it requires little operational overhead, supports large volumes of data, and is highly performant when queries are tuned to take advantage of its' architecture.
 
 
 ## Cloud Memorystore
 
 ### 1. Characteristics
-    - a managed Redis service, you should still monitor : memory usage, duration periods of memory overload, cache-hit ratio & the number of expirable keys
+    - a managed Redis service, you should still monitor : memory usage, duration periods of memory overload, 
+      cache-hit ratio & the number of expirable keys
     - commonly used for caching
     - Configuration (creation with the Cloud Console or gcloud commands) :
         - Instance ID.
@@ -207,7 +254,9 @@ Exports:
         - Memory from 1 to 300 GB
         - Maximum memory policy & an eviction policy
     - High Availability / Instance tier : basic (not HA) or standard (failover replica in a different zone)
-    - Good Practice : to avoid memory pressure, scale up, lower the max memory limit, modify eviction policy, set time-to-live TTL parameters on volatile key (how long it's kept before becoming leigible for eviction), or manually delete data.
+    - Good Practice : to avoid memory pressure, scale up, lower the max memory limit, modify eviction policy, 
+      set time-to-live TTL parameters on volatile key (how long it's kept before becoming leigible for eviction), 
+      or manually delete data.
     
 ### 2. Import & export
     - in beta
@@ -218,7 +267,8 @@ Exports:
 
 ### 3. Scaling (to use more or less mem)
     - Basic Tier : I/O are blocked. When resizing is over: all data is flushed 
-    - Standard Tier: can scale while continuing to support I/O : the replica is resized first and then synchronized with the primary. The primary then fails over.
+    - Standard Tier: can scale while continuing to support I/O : the replica is resized first and then 
+      synchronized with the primary. The primary then fails over.
     - over 80% = memory pressure => scale up
 
 ## Cloud Storage
@@ -283,6 +333,3 @@ With Cloud Storage :
     - can be triggered based on the age of the object, its creation, the versions number &  its storage class
 
 2. __Retention policies__ : it uses the Bucket Lock feature to enforce object retention, to ensure that any object in the bucket wil not be deleted until they reach the specified age (useful for compliance with gov. or industry regulations.
-
-
-
