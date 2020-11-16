@@ -136,23 +136,47 @@ Like Cloud Spanner, Bigtable import & export ops are performed using Cloud Dataf
 ## Cloud Firestore
 
 1. Characteristics
-    - fully managed???
-    - relational DB : ??
-    - Configuration : ??
+    - managed
+    - document database (replacing Cloud Datastore) / 2 modes:
+        - Cloud Datastore Mode: operates like Datastore but uses the Firestore storage system 
+            - provides strong consistency instead of eventual consistency
+            - well suited for apps that require semi-structured data but that do not require low-latency writes (< 10 ms otherwise Bigtable)
+        - Native Mode     
+            - the new data model
+            - real-time updates
+            - mobile & web client library
+        - unlike Datastore: no limit of 25 entity groups, or ancestor/descendent relations & a max of one write per sec. to an entity group.
+     
+2. Data Model
 
-    - Backup : ??
-    - High Availability 
+- Datastore Mode : consists of entities, entity groups, properties, and keys.
+    - Entities: 
+        - analogous to tables in a relational DBs
+        - describe a particular type of thing, or entity kind
+        - have identifiers, assigned automatically or specified by an app.(random distribution to avoid hot spotting)
+        - properties: name-value pairs, can have one value or multiple values
+        - the value of a property can be another entity(allows for hierarchical structures)
+   
+3. Indexing & Querying
+Uses two  kinds of indexes:
+- built-in indexes: created by default for each property in an entity
+- composite indexes: index multiple values of an entity.
 
-    - Good Practice : ??
-    
-2. Read performance Improvement
+Cloud Firestore uses a SQL-like language called GQL (GraphQL): queries consist of an entity kind, filters, and optionally a sort order specification. 
 
-3. Import & export
+4. Import & export
+Entities can be imported & exported from Cloud Firestore. 
+Exports:
+- contain entities but not indexes (rebuilt during import)
+- requires a Cloud Storage bucket to store the data
+- you can specify a filter for a subset
+- there are restrictions on importing Cloud Firestore exports to BigQuery
+
 
 ## BigQuery
 
 1. Characteristics
-    - fully managed???
+    - managed
     - relational DB : ??
     - Configuration : ??
 
@@ -164,6 +188,11 @@ Like Cloud Spanner, Bigtable import & export ops are performed using Cloud Dataf
 2. Read performance Improvement
 
 3. Import & export
+
+
+
+
+
 
 ## Cloud Memorystore
 
