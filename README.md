@@ -48,6 +48,9 @@ will be updated later
 - Qwliks
 
 https://medium.com/@avinash.gupta/gcp-certified-data-engineer-in-3-weeks-345ecfa667c3
+
 https://simonleewm.medium.com/a-study-guide-to-the-google-cloud-professional-data-engineer-certification-path-9e83e41e311
+
 https://deploy.live/blog/google-cloud-certified-professional-data-engineer/
+
 https://medium.com/google-cloud/a-tensorflow-glossary-cheat-sheet-382583b22932
