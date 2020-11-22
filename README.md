@@ -54,3 +54,6 @@ https://simonleewm.medium.com/a-study-guide-to-the-google-cloud-professional-dat
 https://deploy.live/blog/google-cloud-certified-professional-data-engineer/
 
 https://medium.com/google-cloud/a-tensorflow-glossary-cheat-sheet-382583b22932
+
+unfinished...
+more to come soon :)
