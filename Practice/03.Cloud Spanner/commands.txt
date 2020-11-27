@@ -1,0 +1,22 @@
+https://cloud.google.com/spanner/docs/getting-started/python/
+
+git clone https://github.com/googleapis/python-spanner
+
+cd python-spanner/samples/samples
+
+virtualenv env
+source env/bin/activate
+pip install -r requirements.txt
+
+gcloud spanner instances create test-instance --config=regional-us-central1 \
+    --description="Test Instance" --nodes=1
+	
+python snippets.py test-instance --database-id example-db create_database
+
+python snippets.py test-instance --database-id example-db insert_with_dml
+
+python snippets.py test-instance --database-id example-db insert_data
+
+
+gcloud spanner databases execute-sql example-db --instance=test-instance \
+    --sql='SELECT SingerId, AlbumId, AlbumTitle FROM Albums'

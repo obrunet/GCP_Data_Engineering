@@ -1,0 +1,11 @@
+# make a bucket
+gsutil mb -l us-central1 gs://my-training-data
+
+# add sql then csv files in the instance with the web UI
+# connect to the instance with cloud shell
+
+show databases;
+use recommendation_spark;
+show tables;
+select * from ratings;
+
