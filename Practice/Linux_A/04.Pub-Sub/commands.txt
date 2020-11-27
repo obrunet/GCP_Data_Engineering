@@ -1,0 +1,14 @@
+# create a topic called 'my-topic2'
+gcloud pubsub topics create my-topic2
+
+# create subscription to topic 'my-topic2'
+gcloud pubsub subscriptions create --topic my-topic2 mySub2
+
+# publish a message to your topic
+gcloud pubsub topics publish my-topic2 --message "hello topic 2"
+
+# retrieve message with your subscription, acknowledge receipt and remove message from queue
+gcloud pubsub subscriptions pull --auto-ack mySub2
+
+# cancel subscription
+gcloud pubsub subscriptions delete mySub2
