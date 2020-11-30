@@ -46,6 +46,9 @@ will be updated later
 - Official Study Guide
 - Exams
 - Qwliks
+    - [GCP Essentials](https://google.qwiklabs.com/quests/23?utm_source=gcp&utm_medium=site&utm_campaign=certification)
+    - [Data Engineering](https://google.qwiklabs.com/quests/25?catalog_rank=%7B%22rank%22%3A2%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&search_id=4487242)
+    - [Baseline: Data, ML, AI](https://google.qwiklabs.com/quests/34)
 
 https://medium.com/@avinash.gupta/gcp-certified-data-engineer-in-3-weeks-345ecfa667c3
 
