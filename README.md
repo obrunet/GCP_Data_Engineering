@@ -38,7 +38,7 @@ Then in the __Practice__ section, you'll find all the capstone projects i've acc
     - [GCP Essentials](Practice/1_Qwicklabs_GCP%20essentials)
     - [Baseline: Data, ML, AI](Practice/2_Qwicklabs_Baseline_Data_ML_AI)
     - [Data Engineering](Practice/3_Qwicklabs_Data_Engineering)
-    - [Engineer Data in Google Cloud](Practice/4_Engineer Data in Google Cloud)
+    - [Engineer Data in Google Cloud](Practice/4_Engineer%20Data%20in%20Google%20Cloud)
 - GCP solutions
 
 ## Tips for the exam
