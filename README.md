@@ -41,7 +41,7 @@ Then in the __Practice__ section, you'll find all the capstone projects i've acc
     - [Engineer Data in Google Cloud](Practice/4_Engineer%20Data%20in%20Google%20Cloud)
 - GCP solutions
 
-## Tips for the exam
+## [Tips for the exam](/tips.md)
 will be updated later
 
 # References
@@ -56,8 +56,6 @@ will be updated later
     - [Data Engineering](https://google.qwiklabs.com/quests/25?catalog_rank=%7B%22rank%22%3A2%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&search_id=4487242)
     - [Engineer Data in Google Cloud](https://google.qwiklabs.com/quests/132)
 
-
-https://medium.com/@avinash.gupta/gcp-certified-data-engineer-in-3-weeks-345ecfa667c3
 
 https://simonleewm.medium.com/a-study-guide-to-the-google-cloud-professional-data-engineer-certification-path-9e83e41e311
 
