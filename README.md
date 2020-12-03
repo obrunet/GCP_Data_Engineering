@@ -41,8 +41,8 @@ Then in the __Practice__ section, you'll find all the capstone projects i've acc
     - [Engineer Data in Google Cloud](Practice/4_Engineer%20Data%20in%20Google%20Cloud)
 - GCP solutions
 
-## [Tips for the exam](/tips.md)
-will be updated later
+## [Tips for the exam](/tips.md) 
+need to be updated... will be completed later
 
 # References
 - [Data Lifecycle](https://cloud.google.com/solutions/data-lifecycle-cloud-platform)
