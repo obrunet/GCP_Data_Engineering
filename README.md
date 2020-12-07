@@ -63,12 +63,9 @@ https://deploy.live/blog/google-cloud-certified-professional-data-engineer/
 
 https://medium.com/google-cloud/a-tensorflow-glossary-cheat-sheet-382583b22932
 
-unfinished...
-more to come soon :)
-
 
 https://cloud.google.com/products/storage/
 
-
 https://cloud.google.com/products/databases
 
+more to come soon :)
