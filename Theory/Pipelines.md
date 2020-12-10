@@ -52,10 +52,21 @@ undeing, continuously, may not need to process & anlayze the data as soon as pos
 ## Components
 
 ### Cloud Pub/Sub
-- a real time messaging service taht suppors both push & pull suscription models
-- managed service
-- requires no provisionning of servers or clusters
+- a real time messaging service that suppors both push & pull suscription models
+- managed service : requires no provisionning of servers or clusters
 - automatically scale and partition load as needed
+
+Messages queues are used in distributed systems to decouple services in a pipeline -> allow one service to produce more output the consuming service can process (helpfull when one process is subject to spikes in workload)
+- Topic creation (logical structure for organizing your messages)
+- Subscription creation to a topic (logical structure for organizing the reception of messages by consuming processes)
+- Then message publication to the topic
+
+subscription models:
+- push deliver the msg to an endpoint
+- pull : when you want the the consuming app to control when msg are retrieved from a topic.
+
+NOT FINISHED
+
 
 
 ### Dataproc
