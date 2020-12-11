@@ -332,6 +332,3 @@ With Cloud Storage :
     - can be triggered based on the age of the object, its creation, the versions number &  its storage class
 
 2. __Retention policies__ : it uses the Bucket Lock feature to enforce object retention, to ensure that any object in the bucket wil not be deleted until they reach the specified age (useful for compliance with gov. or industry regulations.
-
-
-dsfsdf
