@@ -147,7 +147,7 @@ Like Cloud Spanner, Bigtable import & export ops are performed using Cloud Dataf
             - the new data model
             - real-time updates
             - mobile & web client library
-        - unlike Datastore: no limit of 25 entity groups, or ancestor/descendent relations & a max of one write per sec. to an entity group.
+            - unlike Datastore: no limit of 25 entity groups, or ancestor/descendent relations & a max of one write per sec. to an entity group.
      
 2. Data Model
 
