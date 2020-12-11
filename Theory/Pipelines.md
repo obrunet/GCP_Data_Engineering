@@ -65,7 +65,7 @@ subscription models:
 - push deliver the msg to an endpoint
 - pull : when you want the the consuming app to control when msg are retrieved from a topic.
 
-NOT FINISHED
+NOT FINISHED !!!!
 
 
 
