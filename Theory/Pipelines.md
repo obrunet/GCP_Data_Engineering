@@ -7,9 +7,9 @@
     - [Types of pipelines](Pipelines.md#types)
 - [Components](Pipelines.md#components)
     - [Cloud Pub/Sub](Pipelines.md#cloud-pubsub)
-    - [Cloud DataProc](Pipelines.md#dataproc)
     - [Cloud Composer](Pipelines.md#cloud-composer)
     - [Cloud DataFlow](Pipelines.md#dataflow)
+    - [Cloud DataProc](Pipelines.md#dataproc)
 
 
 ## Overview
@@ -105,38 +105,6 @@ Kafka is used to publish and subscribe to streams of messages and to reliably st
 - if you plan to continue to use Kafka, you can link it to Cloud Pub/Subusing the CloudPubSubConnector (a bridge between the two messaging systems using Kafka Connect)
 
 
-
-### CLOUD DATAPROC
-
-- makes it easy to migrate from on-premises
-- a managed Hadoop & Spark service - a preconfigured cluster is created in 90s with commonly used components including: Hadoop / Spark / Pig (a compiler that produces map reduce programs from a high-level language) / Hive
-- you can use “ephemeral” clusters i.e destroyed once the task is over in order to save costs
-
-__Managing Data in Cloud Dataproc__
-
-On premise, you store data on the Hadoop cluster using HDFS (good approach when you have dedicated hardware). In the cloud, instead of having a single, long-running Hadoop cluster, you typically start a Cloud Dataproc cluster for each job and shut it down when the job completes. This is a better option.
-
-No need to copy your data from Cloud Storage to HDFS each time. A better approach is to use Cloud Storage as the data store (it saves time & money).
-
-__Configuration__
-
-2 types of nodes: 
-- master nodes : responsible for distributing & managing workload distribution. Runs YARN
-- worker nodes : can include some preemptible machines without HDFS
-
-You can specify a different machine conf for both the master & worker nodes. Several modes :
-
-- dev mode = a single node 
-- standard mode = one master & some number of worker nodes
-- H.A mode = 3 master nodes & some number of workers. 
-
-Once created, a cluster can be scaled up or down. Only the nb of workers nodes can change (the masters are fixed) either manually command line or automatically by creating a policy : a YAML file includes various parameters (
-maxInstances, scaleUpFactor, scaleDownFactor, cooldownPeriod, itworks by checking Hadoop YARN metrics)
-
-- Submitting a Job : you can use an API, a gcloud command, or in the console. 
-- Ggood practice to keep clusters in the same region as the Cloud Storage buckets (better I/O perfs).
-
-
 ### CLOUD COMPOSER
 
 - a managed service implementing Apache Airflow
@@ -145,51 +113,10 @@ maxInstances, scaleUpFactor, scaleDownFactor, cooldownPeriod, itworks by checkin
 - workflows are defined in Python with DAGs
 - built-in integration with BigQuery, Dataflow, Dataproc, Datastore, Storage, Pub/Sub & AI Platform.
 
-Before you can run workflows with Cloud Composer, you will need to create an environment in GCP. Environments run on the Google Kubernetes Engine, so you will have to specify a number of nodes, location, machine type, disk size, and other node and network configuration parameters. You will need to create a Cloud Storage bucket as well.
 
-Migrating Hadoop and Spark to GCP
-When you are migrating Hadoop and Spark clusters to GCP, there are a few things for which you will need to plan:
-
-Migrating data
-Migrating jobs
-Migrating HBase to Bigtable
-You may also have to shift your perspective on how you use clusters. On-premises clusters are typically large persistent clusters that run multiple jobs. They can be complicated to configure and manage. In GCP, it is a best practice to use an ephemeral cluster for each job. This approach leads to less complicated configurations and reduced costs, since you are not storing persistent data on the cluster and not running the cluster for extended periods of time.
-
-Hadoop and Spark migrations can happen incrementally, especially since you will be using ephemeral clusters configured for specific jobs. The first step is to migrate some data to Cloud Storage. Then you can deploy ephemeral clusters to run jobs that use that data. It is best to start with low-risk jobs so that you can learn the details of working with Cloud Dataproc.
-
-There may be cases where you will have to keep an on-premises cluster while migrating some jobs and data to GCP. In those cases, you will have to keep data synchronized between environments. Plan to
-
-implement workflows to keep data synchronized. You should have a way to determine which jobs and data move to the cloud and which stay on premises.
-
-It is a good practice to migrate HBase databases to Bigtable, which provides consistent, scalable performance. When migrating to Bigtable, you will need to export HBase tables to sequence files and copy those to Cloud Storage. Next, you will have to import the sequence files using Cloud Dataflow. When the size of data to migrate is greater than 20 TB, use the Transfer Appliance. When the size is less than 20 TB and there is at least 100 Mbps of network bandwidth available, then distcp, a Hadoop distributed copy command, is the recommended way to copy the data. In addition, it is important to know how long it will take to transfer the data and to have a mechanism for keeping the on-premises data in sync with the data in Cloud Storage.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+First you will need to create :
+- an environment in GCP (environments run on the GKE -> specify a nb of nodes, location, machine type, disk size, & other node and network configuration parameters). 
+- a Cloud Storage bucket as well.
 
 
 ### DATAFLOW
@@ -228,3 +155,62 @@ Jobs can be run from the cmd line or through the use of APIs.
 job = an executing pipeline. 2 ways:
 - the traditional method : developers create a pipeline in a dev env & run the job from that env.
 - the template method separates dev from staging & execution. Devs still create pipelines in a dev env, but also a template (a configured job specification). Google provides a number of templates & you can create your own)
+
+
+
+
+
+
+
+
+
+### CLOUD DATAPROC
+
+- makes it easy to migrate from on-premises
+- a managed Hadoop & Spark service - a preconfigured cluster is created in 90s with commonly used components including: Hadoop / Spark / Pig (a compiler that produces map reduce programs from a high-level language) / Hive
+- you can use “ephemeral” clusters i.e destroyed once the task is over in order to save costs
+
+__Managing Data in Cloud Dataproc__
+
+On premise, you store data on the Hadoop cluster using HDFS (good approach when you have dedicated hardware). In the cloud, instead of having a single, long-running Hadoop cluster, you typically start a Cloud Dataproc cluster for each job and shut it down when the job completes. This is a better option.
+
+No need to copy your data from Cloud Storage to HDFS each time. A better approach is to use Cloud Storage as the data store (it saves time & money).
+
+__Configuration__
+
+2 types of nodes: 
+- master nodes : responsible for distributing & managing workload distribution. Runs YARN
+- worker nodes : can include some preemptible machines without HDFS
+
+You can specify a different machine conf for both the master & worker nodes. Several modes :
+
+- dev mode = a single node 
+- standard mode = one master & some number of worker nodes
+- H.A mode = 3 master nodes & some number of workers. 
+
+Once created, a cluster can be scaled up or down. Only the nb of workers nodes can change (the masters are fixed) either manually command line or automatically by creating a policy : a YAML file includes various parameters (
+maxInstances, scaleUpFactor, scaleDownFactor, cooldownPeriod, itworks by checking Hadoop YARN metrics)
+
+- Submitting a Job : you can use an API, a gcloud command, or in the console. 
+- Ggood practice to keep clusters in the same region as the Cloud Storage buckets (better I/O perfs).
+
+
+
+
+__Migrating Hadoop & Spark to GCP__
+When you are migrating Hadoop and Spark clusters to GCP, there are a few things for which you will need to plan:
+
+Migrating data
+Migrating jobs
+Migrating HBase to Bigtable
+You may also have to shift your perspective on how you use clusters. On-premises clusters are typically large persistent clusters that run multiple jobs. They can be complicated to configure and manage. In GCP, it is a best practice to use an ephemeral cluster for each job. This approach leads to less complicated configurations and reduced costs, since you are not storing persistent data on the cluster and not running the cluster for extended periods of time.
+
+Hadoop and Spark migrations can happen incrementally, especially since you will be using ephemeral clusters configured for specific jobs. The first step is to migrate some data to Cloud Storage. Then you can deploy ephemeral clusters to run jobs that use that data. It is best to start with low-risk jobs so that you can learn the details of working with Cloud Dataproc.
+
+There may be cases where you will have to keep an on-premises cluster while migrating some jobs and data to GCP. In those cases, you will have to keep data synchronized between environments. Plan to
+
+implement workflows to keep data synchronized. You should have a way to determine which jobs and data move to the cloud and which stay on premises.
+
+It is a good practice to migrate HBase databases to Bigtable, which provides consistent, scalable performance. When migrating to Bigtable, you will need to export HBase tables to sequence files and copy those to Cloud Storage. Next, you will have to import the sequence files using Cloud Dataflow. When the size of data to migrate is greater than 20 TB, use the Transfer Appliance. When the size is less than 20 TB and there is at least 100 Mbps of network bandwidth available, then distcp, a Hadoop distributed copy command, is the recommended way to copy the data. In addition, it is important to know how long it will take to transfer the data and to have a mechanism for keeping the on-premises data in sync with the data in Cloud Storage.
+
+
