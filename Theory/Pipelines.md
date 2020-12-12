@@ -51,7 +51,7 @@ undeing, continuously, may not need to process & anlayze the data as soon as pos
 
 ## Components
 
-### Cloud Pub/Sub
+### CLOUD PUB/SUB
 - a real time messaging service that suppors both push & pull suscription models
 - managed service : requires no provisionning of servers or clusters
 - automatically scale and partition load as needed
@@ -94,7 +94,7 @@ Kafka is used to publish and subscribe to streams of messages and to reliably st
 - if you plan to continue to use Kafka, you can link it to Cloud Pub/Subusing the CloudPubSubConnector (a bridge between the two messaging systems using Kafka Connect)
 
 
-### Dataproc
+### DATAPROC
 
 Use Dataproc (in Spark) if you're migrating from Hadoop
 
@@ -103,7 +103,7 @@ _______ not finished______________________
 
 
 
-### Dataflow
+### DATAFLOW
 - a managed stream & batch processing service
 - core component for building pipelines that collect, transform, and output data
 - pipelines are written using the Apache Beam API
@@ -132,22 +132,7 @@ See also the Windowing concepts & watermarks described earlier.
 - Runner = software that executes pipelines as jobs
 - Triggers = functions that determine when to emit an aggregated result. In batch = when all the data has been processed / On a stream, you have to specify a window over the stream to define a bounded subset (in the window conf)
 
-
-
-
-
-
-
-. A
-
-
-.
-
- .
-
-
-
-Jobs and Templates
+__Jobs & Templates__
 
 A job is an executing pipeline in Cloud Dataflow. There are two ways to execute jobs: the traditional method and the template method.
 
@@ -164,37 +149,3 @@ Jobs can be run from the command line and through the use of APIs as well. For e
 gcloud dataflow jobs run pde-job-1 \
 --gcs-location gs://pde-exam-cert/templates/word-count-template
 This command creates a job named pde-job-1 using a template file called word-count-template located in the pde-exam-cert/templates bucket.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-or Datafow (similar to Apache Beam) for new processes
-serverless
-provides a unified batch and stream processing model 
-Java or Python
-Piplines
-PCollection
-Ptransform
