@@ -8,6 +8,7 @@
 - [Components](Pipelines.md#components)
     - [Cloud Pub/Sub](Pipelines.md#cloud-pubsub)
     - [Cloud DataProc](Pipelines.md#dataproc)
+    - [Cloud Composer](Pipelines.md#cloud-composer)
     - [Cloud DataFlow](Pipelines.md#dataflow)
 
 
@@ -105,7 +106,7 @@ Kafka is used to publish and subscribe to streams of messages and to reliably st
 
 
 
-### DATAPROC
+### CLOUD DATAPROC
 
 - makes it easy to migrate from on-premises
 - a managed Hadoop & Spark service - a preconfigured cluster is created in 90s with commonly used components including: Hadoop / Spark / Pig (a compiler that produces map reduce programs from a high-level language) / Hive
