@@ -94,29 +94,97 @@ Kafka is used to publish and subscribe to streams of messages and to reliably st
 - if you plan to continue to use Kafka, you can link it to Cloud Pub/Subusing the CloudPubSubConnector (a bridge between the two messaging systems using Kafka Connect)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Dataproc
 
 Use Dataproc (in Spark) if you're migrating from Hadoop
 
+_______ not finished______________________
+
+
+
+
 ### Dataflow
-- a managed stream and batch processing service.
-- core component for building pipelines taht collect, transform, and output data
+- a managed stream & batch processing service
+- core component for building pipelines that collect, transform, and output data
 - pipelines are written using the Apache Beam API
+- Apache Beam incorporates Beam runners. The Cloud Dataflow runner is commonly used in GCP. Apache Flink is another commonly used Beam runner.
+- does not require you to configure instances or clusters (no-ops service) - - it directly integrates with Cloud Pub/Sub, BigQuery, and the Cloud ML Engine. Cloud Dataflow integrates with Bigtable and Apache Kafka.
+- much of your work : coding transformations in Java or Python
+
+__Cloud Dataflow concepts__
+
+See also the Windowing concepts & watermarks described earlier.
+- Pipelines:
+    - a series of computations applied to data
+    - result of the previous computations become the input for the next one
+    - represent a job that can be run repeatedly.
+- PCollection
+- Transforms
+- ParDo
+- Pipeline I/O
+- Aggregation
+- User-defined functions
+- Runner
+- Triggers
+
+
+Pipelines in Cloud Dataflow are, as you would expect, 
+
+The PCollection abstraction is a dataset, which is the data used when a pipeline job is run. In the case of batch processing, the PCollection contains a fixed set of data. In the case of streaming data, the PCollection is unbounded.
+
+Transforms are operations that map input data to some output data. Transforms operate on one or more PCollections as input and can produce one or more output PCollections. The operations can be mathematical calculations, data type conversions, and data grouping steps, as well as performing read and write operations.
+
+ParDo is a parallel processing operation that runs a user-specified function on each element in a PCollection. ParDo transforms data in parallel. ParDo receives input data from a main PCollection but may also receive additional inputs from other PCollections by using a side input. Side inputs can be used to perform joins. Similarly, while a ParDo produces a main output PCollection, additional collections can be output using a side output. Side outputs are especially useful when you want to have additional processing paths. For example, a side output could be used for data that does not pass some validation check.
+
+Pipeline I/Os are transforms for reading data into a pipeline from a source and writing data to a sink.
+
+Aggregation is the process of computing a result from multiple input values. Aggregation can be simple, like counting the number of messages arriving in a one-minute period or averaging the values of metrics received over the past hour.
+
+User-defined functions (UDF) are user-specified code for performing some operation, typically using a ParDo.
+
+Runners are software that executes pipelines as jobs.
+
+Triggers are functions that determine when to emit an aggregated result. In batch processing jobs, results are emitted when all the data has been processed. When operating on a stream, you have to specify a window over the stream to define a bounded subset, which is done by configuring the window.
+
+Jobs and Templates
+
+A job is an executing pipeline in Cloud Dataflow. There are two ways to execute jobs: the traditional method and the template method.
+
+With the traditional method, developers create a pipeline in a development environment and run the job from that environment. The template method separates development from staging and execution. With the template method, developers still create pipelines in a development environment, but they also create a template, which is a configured job specification. The specification can have parameters that are specified when a user runs the template. Google provides a number of templates, and you can create your own as well. See Figure 3.9 for examples of templates provided by Google.
+
+fter selecting a template, you can specify parameters, such as source and sink specifications. Figure 3.10 shows the parameters and transformations used in the Word Count Template.
+
+
+Figure 3.10 Specifying parameters for the Word Count Template
+
+Jobs can be run from the command line and through the use of APIs as well. For example, you could use the gcloud dataflow jobs run command to start a job. An example of a complete job run command looks like this:
+
+
+gcloud dataflow jobs run pde-job-1 \
+--gcs-location gs://pde-exam-cert/templates/word-count-template
+This command creates a job named pde-job-1 using a template file called word-count-template located in the pde-exam-cert/templates bucket.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
