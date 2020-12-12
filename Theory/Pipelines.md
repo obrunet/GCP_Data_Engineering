@@ -58,7 +58,10 @@ undeing, continuously, may not need to process & anlayze the data as soon as pos
     - model training & evaluation
     - deployment
 
+--- 
+
 ## Components
+
 
 ### CLOUD PUB/SUB
 - a real time messaging service that suppors both push & pull suscription models
@@ -91,8 +94,6 @@ When a message is sent but before it is acknowledged, the message is considered 
 - no guarantees that the order of message reception is the same as the publish order. 
 - messages can be delivered more than once -> your processing logic should be idempotent
 
-
-
 If you need guaranteed exactly once processing, use Cloud Dataflow PubsubIO, which de-duplicates based on a message ID. Cloud Dataflow can also be used to ensure that messages are processed in order.
 
 __Open Source Alternative: Kafka__
@@ -103,13 +104,109 @@ Kafka is used to publish and subscribe to streams of messages and to reliably st
 - if you plan to continue to use Kafka, you can link it to Cloud Pub/Subusing the CloudPubSubConnector (a bridge between the two messaging systems using Kafka Connect)
 
 
+
 ### DATAPROC
 
-Use Dataproc (in Spark) if you're migrating from Hadoop
+- makes it easy to migrate from on-premises
+- a managed Hadoop & Spark service - a preconfigured cluster is created with commonly used components including: Hadoop / Spark / Pig (a compiler that produces map reduce programs from a high-level language) / Hive
+- you can use “ephemeral” clusters i.e destroyed once the task is over in order to save costs
 
-_______ not finished______________________
+Managing Data in Cloud Dataproc
 
-fdsqfd
+When running Hadoop on premises, you store data on the Hadoop cluster. The cluster uses the Hadoop Distributed File System (HDFS), which is part of Hadoop. This is a sound approach when you have dedicated hardware implementing your Hadoop cluster. In the cloud, instead of having a single, long-running Hadoop cluster, you typically start a Cloud Dataproc cluster for each job and shut down the cluster when the job completes. This is a better option than maintaining a long-running cluster in the cloud because Cloud Dataproc clusters start in about 90 seconds, so there is little disincentive to shutting down clusters when idle.
+
+Since you tend to use ephemeral clusters when working with Cloud Dataproc, if you wanted to use HDFS here you would have to copy your data from Cloud Storage each time you started a cluster. A better approach is to use Cloud Storage as the data store. This saves the time and the cost of having to copy data to the cluster.
+
+Configuring a Cloud Dataproc Cluster
+
+Cloud Dataproc clusters consist of two types of nodes: master nodes and worker nodes. The master node is responsible for distributing and managing workload distribution. Themaster node runs a system called YARN, which stands for Yet Another Resource Negotiator. YARN uses data about the workload and resource availability on each worker node to determine where to run jobs.
+
+When creating a cluster, you will specify a number of configuration parameters, including a cluster name and the region and zone to create the cluster. Clusters can run on a single node, which is a good option for development. They can also run with one master and some number of worker nodes. This is known as standard mode. High availability mode uses three master nodes and some number of workers. You can specify a machine configuration for both the master and worker nodes, and they do not have to be the same. Worker nodes can include some preemptible machines, although HDFS storage does not run on preemptible nodes, which is another reason to use Cloud Storage instead of HDFS.
+
+Initialization scripts can be run when the cluster is created by specifying script files located in a Cloud Storage bucket.
+
+Clusters can be created using the console or the command line. The following gcloud dataproc clusters create command, for example, will create a cluster with the default configuration:
+
+
+gcloud dataproc clusters create pde-cluster-1
+Once a cluster is created, it can be scaled up or down. Only the number of worker nodes can change—master nodes are fixed. You can manually scale the size of a cluster using the gcloud dataproc clusters update command, as follows:
+
+
+gcloud dataproc clusters update pde-cluster-1 \
+--num-workers 10 \
+--num-preemptible-workers 20
+This snippet will scale the cluster to run 10 regular workers and 20 preemptible worker nodes.
+
+Cloud Dataproc also supports autoscaling by creating an autoscaling policy for a cluster. An autoscaling policy is specified in a YAML file and includes parameters such as
+
+maxInstances
+scaleUpFactor
+scaleDownFactor
+cooldownPeriod
+Autoscaling works by checking Hadoop YARN metrics about memory use at the end of each cooldownPeriod. The number of nodes added or removed is determined by the current number and the scaling factor.
+
+Submitting a Job
+
+Jobs are submitted to Cloud Dataproc using an API, a gcloud command, or in the console. The gcloud dataproc jobs submit command runs a job from the command line. Here is an example command:
+
+
+gcloud dataproc jobs submit pyspark \
+--cluster pde-cluster-1 \
+--region us-west-1  \
+gs://pde-exam-cert/dataproc-scripts/analysis.py
+This command submits a PySpark job to the pde-cluster-1 cluster in the us-west-1 region and runs the program in the analysis.py file in the pde-exam-cert/dataproc-scripts Cloud Storage bucket.
+
+In general, it is a good practice to keep clusters in the same region as the Cloud Storage buckets that will be used for storing data. You can expect to see better I/O performance when you configure nodes with larger persistent disks and that use SSDs over HDDs.
+
+Cloud Composer
+Cloud Composer is a managed service implementing Apache Airflow, which is used for scheduling and managing workflows. As pipelines become more complex and have to be resilient when errors occur, it becomes more important to have a framework for managing workflows so that you are not reinventing code for handling errors and other exceptional cases.
+
+Cloud Composer automates the scheduling and monitoring of workflows. Workflows are defined using Python and are directed acyclic graphs. Cloud Composer has built-in integration with BigQuery, Cloud Dataflow, Cloud Dataproc, Cloud Datastore, Cloud Storage, Cloud Pub/Sub, and AI Platform.
+
+Before you can run workflows with Cloud Composer, you will need to create an environment in GCP. Environments run on the Google Kubernetes Engine, so you will have to specify a number of nodes, location, machine type, disk size, and other node and network configuration parameters. You will need to create a Cloud Storage bucket as well.
+
+Migrating Hadoop and Spark to GCP
+When you are migrating Hadoop and Spark clusters to GCP, there are a few things for which you will need to plan:
+
+Migrating data
+Migrating jobs
+Migrating HBase to Bigtable
+You may also have to shift your perspective on how you use clusters. On-premises clusters are typically large persistent clusters that run multiple jobs. They can be complicated to configure and manage. In GCP, it is a best practice to use an ephemeral cluster for each job. This approach leads to less complicated configurations and reduced costs, since you are not storing persistent data on the cluster and not running the cluster for extended periods of time.
+
+Hadoop and Spark migrations can happen incrementally, especially since you will be using ephemeral clusters configured for specific jobs. The first step is to migrate some data to Cloud Storage. Then you can deploy ephemeral clusters to run jobs that use that data. It is best to start with low-risk jobs so that you can learn the details of working with Cloud Dataproc.
+
+There may be cases where you will have to keep an on-premises cluster while migrating some jobs and data to GCP. In those cases, you will have to keep data synchronized between environments. Plan to
+
+implement workflows to keep data synchronized. You should have a way to determine which jobs and data move to the cloud and which stay on premises.
+
+It is a good practice to migrate HBase databases to Bigtable, which provides consistent, scalable performance. When migrating to Bigtable, you will need to export HBase tables to sequence files and copy those to Cloud Storage. Next, you will have to import the sequence files using Cloud Dataflow. When the size of data to migrate is greater than 20 TB, use the Transfer Appliance. When the size is less than 20 TB and there is at least 100 Mbps of network bandwidth available, then distcp, a Hadoop distributed copy command, is the recommended way to copy the data. In addition, it is important to know how long it will take to transfer the data and to have a mechanism for keeping the on-premises data in sync with the data in Cloud Storage.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
