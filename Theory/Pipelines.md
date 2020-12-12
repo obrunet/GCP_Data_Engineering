@@ -139,9 +139,11 @@ maxInstances, scaleUpFactor, scaleDownFactor, cooldownPeriod, itworks by checkin
 
 ### CLOUD COMPOSER
 
-Cloud Composer is a managed service implementing Apache Airflow, which is used for scheduling and managing workflows. As pipelines become more complex and have to be resilient when errors occur, it becomes more important to have a framework for managing workflows so that you are not reinventing code for handling errors and other exceptional cases.
-
-Cloud Composer automates the scheduling and monitoring of workflows. Workflows are defined using Python and are directed acyclic graphs. Cloud Composer has built-in integration with BigQuery, Cloud Dataflow, Cloud Dataproc, Cloud Datastore, Cloud Storage, Cloud Pub/Sub, and AI Platform.
+- a managed service implementing Apache Airflow
+- used for scheduling and managing workflows (framework for more resilient and complex pipelines handling errors & other exceptional cases).
+- automates the scheduling & monitoring of workflows
+- workflows are defined in Python with DAGs
+- built-in integration with BigQuery, Dataflow, Dataproc, Datastore, Storage, Pub/Sub & AI Platform.
 
 Before you can run workflows with Cloud Composer, you will need to create an environment in GCP. Environments run on the Google Kubernetes Engine, so you will have to specify a number of nodes, location, machine type, disk size, and other node and network configuration parameters. You will need to create a Cloud Storage bucket as well.
 
