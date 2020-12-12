@@ -117,7 +117,7 @@ On premise, you store data on the Hadoop cluster using HDFS (good approach when 
 
 No need to copy your data from Cloud Storage to HDFS each time. A better approach is to use Cloud Storage as the data store (it saves time & money).
 
-__Configuring a Cloud Dataproc Cluster__
+__Configuration__
 
 2 types of nodes: 
 - master nodes : responsible for distributing & managing workload distribution. Runs YARN
@@ -129,43 +129,15 @@ You can specify a different machine conf for both the master & worker nodes. Sev
 - standard mode = one master & some number of worker nodes
 - H.A mode = 3 master nodes & some number of workers. 
 
+Once created, a cluster can be scaled up or down. Only the nb of workers nodes can change (the masters are fixed) either manually command line or automatically by creating a policy : a YAML file includes various parameters (
+maxInstances, scaleUpFactor, scaleDownFactor, cooldownPeriod, itworks by checking Hadoop YARN metrics)
 
-Initialization scripts can be run when the cluster is created by specifying script files located in a Cloud Storage bucket.
-
-Clusters can be created using the console or the command line. The following gcloud dataproc clusters create command, for example, will create a cluster with the default configuration:
-
-
-gcloud dataproc clusters create pde-cluster-1
-Once a cluster is created, it can be scaled up or down. Only the number of worker nodes can change—master nodes are fixed. You can manually scale the size of a cluster using the gcloud dataproc clusters update command, as follows:
+- Submitting a Job : you can use an API, a gcloud command, or in the console. 
+- Ggood practice to keep clusters in the same region as the Cloud Storage buckets (better I/O perfs).
 
 
-gcloud dataproc clusters update pde-cluster-1 \
---num-workers 10 \
---num-preemptible-workers 20
-This snippet will scale the cluster to run 10 regular workers and 20 preemptible worker nodes.
+### CLOUD COMPOSER
 
-Cloud Dataproc also supports autoscaling by creating an autoscaling policy for a cluster. An autoscaling policy is specified in a YAML file and includes parameters such as
-
-maxInstances
-scaleUpFactor
-scaleDownFactor
-cooldownPeriod
-Autoscaling works by checking Hadoop YARN metrics about memory use at the end of each cooldownPeriod. The number of nodes added or removed is determined by the current number and the scaling factor.
-
-Submitting a Job
-
-Jobs are submitted to Cloud Dataproc using an API, a gcloud command, or in the console. The gcloud dataproc jobs submit command runs a job from the command line. Here is an example command:
-
-
-gcloud dataproc jobs submit pyspark \
---cluster pde-cluster-1 \
---region us-west-1  \
-gs://pde-exam-cert/dataproc-scripts/analysis.py
-This command submits a PySpark job to the pde-cluster-1 cluster in the us-west-1 region and runs the program in the analysis.py file in the pde-exam-cert/dataproc-scripts Cloud Storage bucket.
-
-In general, it is a good practice to keep clusters in the same region as the Cloud Storage buckets that will be used for storing data. You can expect to see better I/O performance when you configure nodes with larger persistent disks and that use SSDs over HDDs.
-
-Cloud Composer
 Cloud Composer is a managed service implementing Apache Airflow, which is used for scheduling and managing workflows. As pipelines become more complex and have to be resilient when errors occur, it becomes more important to have a framework for managing workflows so that you are not reinventing code for handling errors and other exceptional cases.
 
 Cloud Composer automates the scheduling and monitoring of workflows. Workflows are defined using Python and are directed acyclic graphs. Cloud Composer has built-in integration with BigQuery, Cloud Dataflow, Cloud Dataproc, Cloud Datastore, Cloud Storage, Cloud Pub/Sub, and AI Platform.
