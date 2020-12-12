@@ -118,33 +118,34 @@ See also the Windowing concepts & watermarks described earlier.
     - a series of computations applied to data
     - result of the previous computations become the input for the next one
     - represent a job that can be run repeatedly.
-- PCollection
+- PCollection = abstraction of a dataset (batch processing = bounded / streaming data = unbounded)
 - Transforms
-- ParDo
-- Pipeline I/O
-- Aggregation
-- User-defined functions
-- Runner
-- Triggers
+    - operations that map input data (source) to some output data (sink).
+    - operate on one or more PCollections as input & can produce one or more output PCollections
+    - math calculations, type conversions, grouping/splitting, read & write ops.
+- ParDo = a parallel processing op on each element in a PCollection
+    - may also receive a side input used to perform joins
+    - similarly, side outputs can be useful when you want to have additional processing paths (for example for data that does not pass some validation check).
+- Pipeline I/O = transforms for reading data into a pipeline from a source and writing data to a sink
+- Aggregation = process of computing a result from multiple input values
+- User-defined functions (UDF) = user-specified code for performing some operation, typically using a ParDo
+- Runner = software that executes pipelines as jobs
+- Triggers = functions that determine when to emit an aggregated result. In batch = when all the data has been processed / On a stream, you have to specify a window over the stream to define a bounded subset (in the window conf)
 
 
-Pipelines in Cloud Dataflow are, as you would expect, 
 
-The PCollection abstraction is a dataset, which is the data used when a pipeline job is run. In the case of batch processing, the PCollection contains a fixed set of data. In the case of streaming data, the PCollection is unbounded.
 
-Transforms are operations that map input data to some output data. Transforms operate on one or more PCollections as input and can produce one or more output PCollections. The operations can be mathematical calculations, data type conversions, and data grouping steps, as well as performing read and write operations.
 
-ParDo is a parallel processing operation that runs a user-specified function on each element in a PCollection. ParDo transforms data in parallel. ParDo receives input data from a main PCollection but may also receive additional inputs from other PCollections by using a side input. Side inputs can be used to perform joins. Similarly, while a ParDo produces a main output PCollection, additional collections can be output using a side output. Side outputs are especially useful when you want to have additional processing paths. For example, a side output could be used for data that does not pass some validation check.
 
-Pipeline I/Os are transforms for reading data into a pipeline from a source and writing data to a sink.
 
-Aggregation is the process of computing a result from multiple input values. Aggregation can be simple, like counting the number of messages arriving in a one-minute period or averaging the values of metrics received over the past hour.
+. A
 
-User-defined functions (UDF) are user-specified code for performing some operation, typically using a ParDo.
 
-Runners are software that executes pipelines as jobs.
+.
 
-Triggers are functions that determine when to emit an aggregated result. In batch processing jobs, results are emitted when all the data has been processed. When operating on a stream, you have to specify a window over the stream to define a bounded subset, which is done by configuring the window.
+ .
+
+
 
 Jobs and Templates
 
