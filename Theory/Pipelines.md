@@ -108,20 +108,27 @@ Kafka is used to publish and subscribe to streams of messages and to reliably st
 ### DATAPROC
 
 - makes it easy to migrate from on-premises
-- a managed Hadoop & Spark service - a preconfigured cluster is created with commonly used components including: Hadoop / Spark / Pig (a compiler that produces map reduce programs from a high-level language) / Hive
+- a managed Hadoop & Spark service - a preconfigured cluster is created in 90s with commonly used components including: Hadoop / Spark / Pig (a compiler that produces map reduce programs from a high-level language) / Hive
 - you can use “ephemeral” clusters i.e destroyed once the task is over in order to save costs
 
-Managing Data in Cloud Dataproc
+__Managing Data in Cloud Dataproc__
 
-When running Hadoop on premises, you store data on the Hadoop cluster. The cluster uses the Hadoop Distributed File System (HDFS), which is part of Hadoop. This is a sound approach when you have dedicated hardware implementing your Hadoop cluster. In the cloud, instead of having a single, long-running Hadoop cluster, you typically start a Cloud Dataproc cluster for each job and shut down the cluster when the job completes. This is a better option than maintaining a long-running cluster in the cloud because Cloud Dataproc clusters start in about 90 seconds, so there is little disincentive to shutting down clusters when idle.
+On premise, you store data on the Hadoop cluster using HDFS (good approach when you have dedicated hardware). In the cloud, instead of having a single, long-running Hadoop cluster, you typically start a Cloud Dataproc cluster for each job and shut it down when the job completes. This is a better option.
 
-Since you tend to use ephemeral clusters when working with Cloud Dataproc, if you wanted to use HDFS here you would have to copy your data from Cloud Storage each time you started a cluster. A better approach is to use Cloud Storage as the data store. This saves the time and the cost of having to copy data to the cluster.
+No need to copy your data from Cloud Storage to HDFS each time. A better approach is to use Cloud Storage as the data store (it saves time & money).
 
-Configuring a Cloud Dataproc Cluster
+__Configuring a Cloud Dataproc Cluster__
 
-Cloud Dataproc clusters consist of two types of nodes: master nodes and worker nodes. The master node is responsible for distributing and managing workload distribution. Themaster node runs a system called YARN, which stands for Yet Another Resource Negotiator. YARN uses data about the workload and resource availability on each worker node to determine where to run jobs.
+2 types of nodes: 
+- master nodes : responsible for distributing & managing workload distribution. Runs YARN
+- worker nodes : can include some preemptible machines without HDFS
 
-When creating a cluster, you will specify a number of configuration parameters, including a cluster name and the region and zone to create the cluster. Clusters can run on a single node, which is a good option for development. They can also run with one master and some number of worker nodes. This is known as standard mode. High availability mode uses three master nodes and some number of workers. You can specify a machine configuration for both the master and worker nodes, and they do not have to be the same. Worker nodes can include some preemptible machines, although HDFS storage does not run on preemptible nodes, which is another reason to use Cloud Storage instead of HDFS.
+You can specify a different machine conf for both the master & worker nodes. Several modes :
+
+- dev mode = a single node 
+- standard mode = one master & some number of worker nodes
+- H.A mode = 3 master nodes & some number of workers. 
+
 
 Initialization scripts can be run when the cluster is created by specifying script files located in a Cloud Storage bucket.
 
