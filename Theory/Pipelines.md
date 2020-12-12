@@ -2,6 +2,15 @@
 
 = sequences of operations that copy, transform, load & analyze data
 
+- [Overview](Theory/Pipelines.md#overview)
+    - [Stages](Pipelines.md#stages)
+    - [Types of pipelines](Pipelines.md#types)
+- [Components](Pipelines.md#components)
+    - [Cloud Pub/Sub](Pipelines.md#cloud-pubsub)
+    - [Cloud DataProc](Pipelines.md#dataproc)
+    - [Cloud DataFlow](Pipelines.md#dataflow)
+
+
 ## Overview
 
 - abstract concept = dataflow from one stage of processing to another
