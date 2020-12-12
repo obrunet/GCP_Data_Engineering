@@ -157,13 +157,6 @@ job = an executing pipeline. 2 ways:
 - the template method separates dev from staging & execution. Devs still create pipelines in a dev env, but also a template (a configured job specification). Google provides a number of templates & you can create your own)
 
 
-
-
-
-
-
-
-
 ### CLOUD DATAPROC
 
 - makes it easy to migrate from on-premises
@@ -195,22 +188,20 @@ maxInstances, scaleUpFactor, scaleDownFactor, cooldownPeriod, itworks by checkin
 - Ggood practice to keep clusters in the same region as the Cloud Storage buckets (better I/O perfs).
 
 
-
-
 __Migrating Hadoop & Spark to GCP__
-When you are migrating Hadoop and Spark clusters to GCP, there are a few things for which you will need to plan:
 
-Migrating data
-Migrating jobs
-Migrating HBase to Bigtable
-You may also have to shift your perspective on how you use clusters. On-premises clusters are typically large persistent clusters that run multiple jobs. They can be complicated to configure and manage. In GCP, it is a best practice to use an ephemeral cluster for each job. This approach leads to less complicated configurations and reduced costs, since you are not storing persistent data on the cluster and not running the cluster for extended periods of time.
+It can happen incrementally, especially since you will be using ephemeral clusters configured for specific jobs. 
 
-Hadoop and Spark migrations can happen incrementally, especially since you will be using ephemeral clusters configured for specific jobs. The first step is to migrate some data to Cloud Storage. Then you can deploy ephemeral clusters to run jobs that use that data. It is best to start with low-risk jobs so that you can learn the details of working with Cloud Dataproc.
+- First step, __Migrating data__ to Cloud Storage
+- Then __Migrating jobs__ : deploy ephemeral clusters to run jobs that use that data (start with low-risk jobs to get familiar)
 
-There may be cases where you will have to keep an on-premises cluster while migrating some jobs and data to GCP. In those cases, you will have to keep data synchronized between environments. Plan to
+In some cases you will have to keep an on-premises cluster while migrating some jobs and data to GCP --> keep data synchronized between environments with dedicated workflows.
 
-implement workflows to keep data synchronized. You should have a way to determine which jobs and data move to the cloud and which stay on premises.
+You should have a way to determine which jobs and data move to the cloud and which stay on premises.
 
-It is a good practice to migrate HBase databases to Bigtable, which provides consistent, scalable performance. When migrating to Bigtable, you will need to export HBase tables to sequence files and copy those to Cloud Storage. Next, you will have to import the sequence files using Cloud Dataflow. When the size of data to migrate is greater than 20 TB, use the Transfer Appliance. When the size is less than 20 TB and there is at least 100 Mbps of network bandwidth available, then distcp, a Hadoop distributed copy command, is the recommended way to copy the data. In addition, it is important to know how long it will take to transfer the data and to have a mechanism for keeping the on-premises data in sync with the data in Cloud Storage.
-
-
+- __Migrating HBase to Bigtable__ (a good practice)
+    - export HBase tables to sequence files and copy those to Cloud Storage
+    - next, import the sequence files using Cloud Dataflow 
+        - if > 20 TB use the Transfer Appliance
+        - if < 20 TB &  network bandwidth > 100 Mbps, then distcp (a Hadoop distributed copy command)
+        - it is important to know how long the transfer will take to keep data in sync with a mechanism.
