@@ -143,18 +143,8 @@ See also the Windowing concepts & watermarks described earlier.
 
 __Jobs & Templates__
 
-A job is an executing pipeline in Cloud Dataflow. There are two ways to execute jobs: the traditional method and the template method.
+Jobs can be run from the cmd line or through the use of APIs.
 
-With the traditional method, developers create a pipeline in a development environment and run the job from that environment. The template method separates development from staging and execution. With the template method, developers still create pipelines in a development environment, but they also create a template, which is a configured job specification. The specification can have parameters that are specified when a user runs the template. Google provides a number of templates, and you can create your own as well. See Figure 3.9 for examples of templates provided by Google.
-
-fter selecting a template, you can specify parameters, such as source and sink specifications. Figure 3.10 shows the parameters and transformations used in the Word Count Template.
-
-
-Figure 3.10 Specifying parameters for the Word Count Template
-
-Jobs can be run from the command line and through the use of APIs as well. For example, you could use the gcloud dataflow jobs run command to start a job. An example of a complete job run command looks like this:
-
-
-gcloud dataflow jobs run pde-job-1 \
---gcs-location gs://pde-exam-cert/templates/word-count-template
-This command creates a job named pde-job-1 using a template file called word-count-template located in the pde-exam-cert/templates bucket.
+job = an executing pipeline. 2 ways:
+- the traditional method : developers create a pipeline in a dev env & run the job from that env.
+- the template method separates dev from staging & execution. Devs still create pipelines in a dev env, but also a template (a configured job specification). Google provides a number of templates & you can create your own)
