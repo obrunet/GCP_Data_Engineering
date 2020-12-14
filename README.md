@@ -50,14 +50,10 @@ need to be updated... will be completed later
 - Pluralsight
 - Official Study Guide
 - Exams
-- Qwliks
-    - [GCP Essentials](https://google.qwiklabs.com/quests/23?utm_source=gcp&utm_medium=site&utm_campaign=certification)
-    - [Baseline: Data, ML, AI](https://google.qwiklabs.com/quests/34)
-    - [Data Engineering](https://google.qwiklabs.com/quests/25?catalog_rank=%7B%22rank%22%3A2%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&search_id=4487242)
-    - [Engineer Data in Google Cloud](https://google.qwiklabs.com/quests/132)
 
 
-various usefull links :
+
+Various usefull links :
 
 https://simonleewm.medium.com/a-study-guide-to-the-google-cloud-professional-data-engineer-certification-path-9e83e41e311
 
