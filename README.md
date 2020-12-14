@@ -35,10 +35,10 @@ Then in the __Practice__ section, you'll find all the capstone projects i've acc
 ## Practice
 - will be updated later
 - Qwliks
-    - [GCP Essentials](Practice/1_Qwicklabs_GCP%20essentials)
-    - [Baseline: Data, ML, AI](Practice/2_Qwicklabs_Baseline_Data_ML_AI)
-    - [Data Engineering](Practice/3_Qwicklabs_Data_Engineering)
-    - [Engineer Data in Google Cloud](Practice/4_Engineer%20Data%20in%20Google%20Cloud)
+    - GCP Essentials - [Official links](https://google.qwiklabs.com/quests/23) - [Local working dir](Practice/1_Qwicklabs_GCP%20essentials)
+    - Baseline: Data, ML, AI - [Official links](https://google.qwiklabs.com/quests/34) - [Local working dir](Practice/2_Qwicklabs_Baseline_Data_ML_AI)
+    - Data Engineering - [Official links](https://google.qwiklabs.com/quests/25) - [Local working dir](Practice/3_Qwicklabs_Data_Engineering)
+    - Engineer Data in Google Cloud - [Official links](https://run.qwiklabs.com/quests/132) - [Local working dir](Practice/4_Engineer%20Data%20in%20Google%20Cloud)
 - GCP solutions
 
 ## [Tips for the exam](/tips.md) 
