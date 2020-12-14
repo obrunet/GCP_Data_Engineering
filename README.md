@@ -57,15 +57,14 @@ need to be updated... will be completed later
     - [Engineer Data in Google Cloud](https://google.qwiklabs.com/quests/132)
 
 
+various usefull links :
+
 https://simonleewm.medium.com/a-study-guide-to-the-google-cloud-professional-data-engineer-certification-path-9e83e41e311
 
 https://deploy.live/blog/google-cloud-certified-professional-data-engineer/
 
 https://medium.com/google-cloud/a-tensorflow-glossary-cheat-sheet-382583b22932
 
-
 https://cloud.google.com/products/storage/
 
 https://cloud.google.com/products/databases
-
-more to come soon :)
