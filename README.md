@@ -47,7 +47,7 @@ need to be updated... will be completed later
 # References
 - [Data Lifecycle](https://cloud.google.com/solutions/data-lifecycle-cloud-platform)
 - [A Cloud Guru - Google Certified Professional Data Engineer](https://anonym.to/?https://acloudguru.com/course/google-certified-professional-data-engineer)
-- Pluralsight
+- [Pluralsight - Google Cloud Certified Professional Data Engineer](https://anonym.to/?https://www.pluralsight.com/paths/data-engineering-with-google-cloud)
 - Official Study Guide
 - Exams
 
