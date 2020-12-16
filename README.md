@@ -50,15 +50,3 @@ needs to be updated.
 - [Pluralsight - Google Cloud Certified Professional Data Engineer](https://anonym.to/?https://www.pluralsight.com/paths/data-engineering-with-google-cloud)
 - [Official Study Guide](https://anonym.to/?https://www.wiley.com/en-us/Official+Google+Cloud+Certified+Professional+Data+Engineer+Study+Guide-p-9781119618430)
 
-
-Various usefull links :
-
-https://simonleewm.medium.com/a-study-guide-to-the-google-cloud-professional-data-engineer-certification-path-9e83e41e311
-
-https://deploy.live/blog/google-cloud-certified-professional-data-engineer/
-
-https://medium.com/google-cloud/a-tensorflow-glossary-cheat-sheet-382583b22932
-
-https://cloud.google.com/products/storage/
-
-https://cloud.google.com/products/databases

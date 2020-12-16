@@ -7,11 +7,15 @@ Server-based resources require you to specify VMs or clusters
 
 Serverless resources do not require you those specification but  still require some configuration.
 
-# Provisioning & Adjusting Resources
+# Usefull links :
 
-    The server-based service described here are
-    - Compute Engine
-    - Kube Engine
- 
-## Compute Engine
+https://simonleewm.medium.com/a-study-guide-to-the-google-cloud-professional-data-engineer-certification-path-9e83e41e311
+
+https://deploy.live/blog/google-cloud-certified-professional-data-engineer/
+
+https://medium.com/google-cloud/a-tensorflow-glossary-cheat-sheet-382583b22932
+
+https://cloud.google.com/products/storage/
+
+https://cloud.google.com/products/databases
 
