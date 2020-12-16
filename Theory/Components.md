@@ -1,8 +1,21 @@
 # All GCP components
 
+## List of all components :
 
 ![Example](pictures/all_components.png "Example")
 
+## Classification
+
+On the table below, all the GCP components are classified by categories :
+
+![Example](pictures/classification.png "Example")
+
+
+## Storage specifications
+
+![Example](pictures/storage_psecs.png "Example")
+
+## Other list
 
 Compute
 - Compute Engine
