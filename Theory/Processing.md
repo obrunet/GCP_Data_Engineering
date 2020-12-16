@@ -1,5 +1,13 @@
 # Data Processing Solutions
 
+- [Infrastructure Design](Processing.md#infrastructure-design)
+- [Scalability, reliability, availability & maintainability](Processing.md#scalability-reliability-availability--maintainability)
+- [Hybrid & Edge cloud](Processing.md#hybrid--edge-cloud)
+- [Distributed processing systems](Processing.md#distributed-processing-systems)
+- [Migration of data warehouse from on-premises DC to GCP](Processing.md#migration-of-data-warehouse-from-on-premises-dc-to-gcp)
+
+---
+
 Processing starts with data collection and ends with exploration & visualization.
 - How to choose the appropriate compute service depending on the use case
     - Compute Engine / Kubernetes Engine / App Engine / Cloud Functions
