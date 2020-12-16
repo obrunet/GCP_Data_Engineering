@@ -49,4 +49,3 @@ needs to be updated.
 - [A Cloud Guru - Google Certified Professional Data Engineer](https://anonym.to/?https://acloudguru.com/course/google-certified-professional-data-engineer)
 - [Pluralsight - Google Cloud Certified Professional Data Engineer](https://anonym.to/?https://www.pluralsight.com/paths/data-engineering-with-google-cloud)
 - [Official Study Guide](https://anonym.to/?https://www.wiley.com/en-us/Official+Google+Cloud+Certified+Professional+Data+Engineer+Study+Guide-p-9781119618430)
-

@@ -19,3 +19,11 @@ https://cloud.google.com/products/storage/
 
 https://cloud.google.com/products/databases
 
+https://www.slideshare.net/phamphuongtu/big-data-on-google-cloud
+
+https://docs.google.com/presentation/d/1aGOTpNdCoO4GXZ2es38ZFO5qPGEAjTtDSVeHaDpwsas/edit#slide=id.g5e923c6224_162_0
+
+https://cloud.google.com/about/locations/
+
+https://medium.com/@srivatsan88/data-and-analytics-on-google-cloud-platform-13bc92a4596f
+
