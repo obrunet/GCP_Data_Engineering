@@ -75,36 +75,26 @@ Scalability = ability of a system to handle de/increases in workload by adding/r
 - When pods fail, they are replaced much like failed instances in a MIG. 
 - Nodes belong to a pool : the autorepair feature turned on, failed nodes'll be reprovisioned automatically.
 
-There are other ways Kubernetes Engine ensures high availability and reliability. When using Kubernetes Engine, you can specify whether the endpoint for accessing the cluster is zonal or regional. In the latter case, you can access the cluster even if there is a failure in a zone. Also, you can specify a high availability cluster configuration that replicates master and worker nodes across multiple zones.
+### App Engine & Cloud Functions
+pros of serverless & managed services = they are designed to be HA, scalable & reliable.
 
-### App Engine and Cloud Functions
-A key advantage of serverless, managed services like App Engine and Cloud Functions is that they are designed to be highly available, scalable, and reliable.
+- App Engine : you do have the option of configuring policies for scaling (target : CPU, throughput utilizations, & max concurrent requests).
+- Cloud Functions are designed so that each instance of a cloud function handles one request at a time. Additional instances can be created.
 
-In App Engine, when the scheduler has a request, it can send it to an existing instance, add it to a queue, or start another instance, depending on how you have configured App Engine. With App Engine, you do have the option of configuring policies for scaling. This is done by specifying values for target CPU utilization, target throughput utilization, and maximum concurrent requests.
+## Storage Resources
 
-Cloud Functions are designed so that each instance of a cloud function handles one request at a time. If there is a spike in workload, additional function instances can be created. You have some control over this with the ability to set a maximum number of concurrently running instances.
+- Memorystore : Standard Tier is automatically configured to maintain a replica in a different zone used only for H.A, not scalability when Redis detects a failure & triggers a failover.
 
-### Making Storage Resources Available, Reliable, and Scalable
+- Compute Engine and Kubernetes Engine : Persistent disks (built-in redundancy for HA and reliability) are used to provide network-based disk storage to VMs & containers. Users can also create snapshots of disks & store them in Cloud Storage.
 
-GCP provides a range of storage systems, from in-memory caches to archival storage. Here are some examples.
+- Cloud SQL: HA mode by maintaining a primary instance in one zone and a standby instance in an other one within the same region (synchronous replication keeps the data up to date)
 
-Memorystore is an in-memory Redis cache. Standard Tier is automatically configured to maintain a replica in a different zone. The replica is used only for high availability, not scalability. The replica is used only when Redis detects a failure and triggers a failover to the replica.
+- Cloud Storage stores replicas of objects within a region when using standard storage and across regions when using multi-regional storage.
 
-Persistent disks are used with Compute Engine and Kubernetes Engine to provide network-based disk storage to VMs and containers. Persistent disks have built-in redundancy for high availability and reliability. Also, users can create snapshots of disks and store them in Cloud Storage for additional risk mitigation.
+## Network Resources
 
-Cloud SQL is a managed relational database that can operate in high-availability mode by maintaining a primary instance in one zone and a standby instance in another zone within the same region. Synchronous replication keeps the data up to date in both instances. If you require multi-regional redundancy in your relational database, you should consider Cloud Spanner.
-
-Cloud Storage stores replicas of objects within a region when using standard storage and across regions when using multi-regional storage.
-
-Making Network Resources Available, Reliable, and Scalable
-
-Networking resources requires advanced planning for availability, reliability, and scalability.
-
-You have the option of using Standard Tier or Premium Tier networking. Standard Tier uses the public Internet network to transfer data between Google data centers, whereas Premium Tier routes traffic only over Google’s global network. When using the Standard Tier, your data is subject to the reliability of the public Internet.
-
-Network interconnects between on-premises data centers and Google Cloud are not rapidly scaled up or down. At the low end of the bandwidth spectrum, VPNs are used when up to 3 Gbps is sufficient. It is common practice to use two VPNs to connect an enterprise data center to the GCP for redundancy. HA VPN is an option for high-availability VPNs that uses two IP addresses and provides a 99.99 percent service availability, in contrast to the standard VPN, which has a 99.9 percent service level agreement.
-
-For high-throughput use cases, enterprises can use Cloud Interconnect. Cloud Interconnect is available as a dedicated interconnect in which an enterprise directly connects to a Google endpoint and traffic flows directly between the two networks. The other option is to use a partner interconnect, in which case data flows through a third-party network but not over the Internet. Architects may choose Cloud Interconnect for better security, higher speed, and entry into protected networks. In this case, availability, reliability, and scalability are all addressed by redundancy in network infrastructure.
+- Standard Tier uses the public Internet network to transfer data between Google data centers
+- Premium Tier routes traffic only over Google’s global network
 
 
 ## Hybrid & Edge cloud
