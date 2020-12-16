@@ -3,9 +3,9 @@
 - [Tips for the exam](Build_infra.md#provisioning--adjusting-resources)
 - [Usefull links](Build_infra.md#monitoring-processing-resources)
 
-# Tips for the exam
+## Tips for the exam
 
-# Usefull links
+## Usefull links
 
 https://simonleewm.medium.com/a-study-guide-to-the-google-cloud-professional-data-engineer-certification-path-9e83e41e311
 
