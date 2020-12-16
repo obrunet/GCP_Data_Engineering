@@ -41,7 +41,7 @@ Then in the __Practice__ section, you'll find all the capstone projects i've acc
     - Engineer Data in Google Cloud - [Official links](https://run.qwiklabs.com/quests/132) - [Local working dir](Practice/4_Engineer%20Data%20in%20Google%20Cloud)
 - GCP solutions
 
-## [Tips for the exam & usefull links](/Tips.md) 
+## [Tips for the exam & usefull links](Theory/Tips.md) 
 needs to be updated.
 
 # References
