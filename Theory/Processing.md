@@ -118,8 +118,6 @@ A variation of Hybrid Cloud. Used when
 __TO BE CONTINUED__
 
 ### Messaging
-__TO BE CONTINUED__
-yeah
 
 
 ### Services
