@@ -118,7 +118,7 @@ A variation of Hybrid Cloud. Used when
 __TO BE CONTINUED__
 
 ### Messaging
-
+__TO BE CONTINUED__
 
 ### Services
 __TO BE CONTINUED__
