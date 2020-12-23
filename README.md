@@ -42,6 +42,7 @@ Then in the __Practice__ section, you'll find all the capstone projects i've acc
 - GCP solutions
 
 ## [Tips for the exam & usefull links](Theory/Tips.md) 
+- [Practice Exam](https://cloud.google.com/certification/sample-questions/data-engineer)
 needs to be updated.
 
 # References
