@@ -21,12 +21,8 @@
 - [How I passed the Google Professional Data Engineer Exam in 2020](https://towardsdatascience.com/how-i-passed-google-professional-data-engineer-exam-in-2020-2830e10658b6)
 - [A mini review of GCP for data science and engineering](https://medium.com/@matthagy/a-mini-review-of-gcp-for-data-science-and-engineering-2df13c41b434)
 - [A GCP flowchart a day](https://medium.com/google-cloud/a-gcp-flowchart-a-day-2d57cc109401)
-
-
-
-https://simonleewm.medium.com/a-study-guide-to-the-google-cloud-professional-data-engineer-certification-path-9e83e41e311
-
-https://deploy.live/blog/google-cloud-certified-professional-data-engineer/
+- [A Study Guide to the Google Cloud Professional Data Engineer Certification Path](https://simonleewm.medium.com/a-study-guide-to-the-google-cloud-professional-data-engineer-certification-path-9e83e41e311)
+- [Google Cloud Certified Professional Data Engineer - 2019 Updated exam](https://deploy.live/blog/google-cloud-certified-professional-data-engineer/)
 
 https://medium.com/google-cloud/a-tensorflow-glossary-cheat-sheet-382583b22932
 
