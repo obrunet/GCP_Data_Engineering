@@ -23,18 +23,10 @@
 - [A GCP flowchart a day](https://medium.com/google-cloud/a-gcp-flowchart-a-day-2d57cc109401)
 - [A Study Guide to the Google Cloud Professional Data Engineer Certification Path](https://simonleewm.medium.com/a-study-guide-to-the-google-cloud-professional-data-engineer-certification-path-9e83e41e311)
 - [Google Cloud Certified Professional Data Engineer - 2019 Updated exam](https://deploy.live/blog/google-cloud-certified-professional-data-engineer/)
-
-https://medium.com/google-cloud/a-tensorflow-glossary-cheat-sheet-382583b22932
-
-https://cloud.google.com/products/storage/
-
-https://cloud.google.com/products/databases
-
-https://www.slideshare.net/phamphuongtu/big-data-on-google-cloud
-
-https://docs.google.com/presentation/d/1aGOTpNdCoO4GXZ2es38ZFO5qPGEAjTtDSVeHaDpwsas/edit#slide=id.g5e923c6224_162_0
-
-https://cloud.google.com/about/locations/
-
-https://medium.com/@srivatsan88/data-and-analytics-on-google-cloud-platform-13bc92a4596f
-
+- [A TensorFlow Glossary/Cheat Sheet](https://medium.com/google-cloud/a-tensorflow-glossary-cheat-sheet-382583b22932)
+- [Big data on google cloud](https://www.slideshare.net/phamphuongtu/big-data-on-google-cloud)
+- [Google Cloud Official Icons and Solution Architectures](https://docs.google.com/presentation/d/1aGOTpNdCoO4GXZ2es38ZFO5qPGEAjTtDSVeHaDpwsas/edit#slide=id.g5e923c6224_162_0)
+- [Data and Analytics on Google Cloud Platform](https://medium.com/@srivatsan88/data-and-analytics-on-google-cloud-platform-13bc92a4596f)
+- [Google Cloud online storage products](https://cloud.google.com/products/storage/)
+- [Google Cloud locations](https://cloud.google.com/about/locations/)
+- [Google Cloud databases](https://cloud.google.com/products/databases)
