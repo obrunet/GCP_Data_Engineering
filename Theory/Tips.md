@@ -6,7 +6,7 @@
 ## Tips for the exam
 
 - know each specs for a GCP component & vice versa
-- be able to choose by the functionality (see this [table](Theory/Components.md#classification)) 
+- be able to choose by the functionality (see this [table](https://github.com/obrunet/GCP_Data_Engineering/blob/main/Theory/Components.md#classification)) 
 - determine the purpose of the use case presented in the question
 - know the difference between GCP components & their open source / hadoop counterparts
 - be aware how to migrate datawarehouse, on premise clusters...
