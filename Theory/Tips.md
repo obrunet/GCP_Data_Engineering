@@ -5,6 +5,15 @@
 
 ## Tips for the exam
 
+- know each specs for a GCP component & vice versa
+- be able to choose by the functionality (see this [table](Theory/Components.md#classification)) 
+- determine the purpose of the use case presented in the question
+- know the difference between GCP components & their open source / hadoop counterparts
+- be aware how to migrate datawarehouse, on premise clusters...
+- practice with exame
+- keep in mind all the best practices, the anti/pattern
+- acquire a strong knowledge in NoSql databases & in Machine Learning
+
 ## Usefull links
 
 - [How I passed the Google Professional Data Engineer Exam in 2020](https://towardsdatascience.com/how-i-passed-google-professional-data-engineer-exam-in-2020-2830e10658b6)
