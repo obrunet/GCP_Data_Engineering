@@ -10,11 +10,13 @@
 - determine the purpose of the use case presented in the question
 - know the difference between GCP components & their open source / hadoop counterparts
 - be aware how to migrate datawarehouse, on premise clusters...
+- know the basics of Tensorflow, Stackdriver, Data Fusion & Data Studio, the regulations...
 - practice - see [the sample questions](https://cloud.google.com/certification/sample-questions/data-engineer) to get familiar with the exam
-- keep in mind all the best practices, the anti/pattern
+- keep in mind all the best practices, the anti/pattern for each component
 - acquire a strong knowledge in NoSql databases & in Machine Learning
 - beware there could be multiple answers
 - know when answers are wrong and try to eliminate them
+
 
 ## Usefull links
 
