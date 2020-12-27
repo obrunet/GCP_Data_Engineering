@@ -18,6 +18,8 @@
 
 ## Usefull links
 
+- [Google Cloud locations](https://cloud.google.com/about/locations/)
+- [Google Cloud databases](https://cloud.google.com/products/databases)
 - [How I passed the Google Professional Data Engineer Exam in 2020](https://towardsdatascience.com/how-i-passed-google-professional-data-engineer-exam-in-2020-2830e10658b6)
 - [A mini review of GCP for data science and engineering](https://medium.com/@matthagy/a-mini-review-of-gcp-for-data-science-and-engineering-2df13c41b434)
 - [A GCP flowchart a day](https://medium.com/google-cloud/a-gcp-flowchart-a-day-2d57cc109401)
@@ -28,5 +30,3 @@
 - [Google Cloud Official Icons and Solution Architectures](https://docs.google.com/presentation/d/1aGOTpNdCoO4GXZ2es38ZFO5qPGEAjTtDSVeHaDpwsas/edit#slide=id.g5e923c6224_162_0)
 - [Data and Analytics on Google Cloud Platform](https://medium.com/@srivatsan88/data-and-analytics-on-google-cloud-platform-13bc92a4596f)
 - [Google Cloud online storage products](https://cloud.google.com/products/storage/)
-- [Google Cloud locations](https://cloud.google.com/about/locations/)
-- [Google Cloud databases](https://cloud.google.com/products/databases)
