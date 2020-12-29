@@ -30,6 +30,8 @@ Then in the __Practice__ section, you'll find all the capstone projects i've acc
 11. Measure, Monitore & Troubleshoot ML
 12. Prebuilt ML Models as a Service
 13. Hadoop & Differences with GCP components
+The M.L part is not developped here since i'm already familliar with all the Data Science concepts. Anyway you can refer to the [Machine Learning cheatsheets for Stanford's CS 229](https://github.com/afshinea/stanford-cs-229-machine-learning) and [a local backup here](Cheatsheets/Machine_learning_stanford) 
+
 
 
 ## Practice
