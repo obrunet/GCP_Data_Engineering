@@ -18,6 +18,16 @@
 - know when answers are wrong and try to eliminate them
 
 
+
+#### Exam question topics:
+- Storage (20%),
+- Big Data Processing (35%),
+- Machine Learning (18%),
+- case studies (same as sample case studies 15%) and
+- others (Hadoop, security, stackdriver about 12%).
+
+or more precisely (dated back mid 2019, since then redis, airflow & RGPD topics have been added) :
+
 GCP Service	Service Function	Certification Weight
 Cloud Storage	Unified object storage	2 %
 Cloud SQL & Spanner	Fully-managed SQL Database	4 %
@@ -45,14 +55,7 @@ Tensorflow	Machine learning language	20 %
 
 
 
-GCP Exam question topics:
-- Storage (20%),
-- Big Data Processing (35%),
-- Machine Learning (18%),
-- case studies (same as sample case studies 15%) and
-- others (Hadoop, security, stackdriver about 12%).
-
-Usefull links :
+Other links :
 
 - [Google Cloud online storage products](https://cloud.google.com/products/storage/)
 - [Google Cloud locations](https://cloud.google.com/about/locations/)
