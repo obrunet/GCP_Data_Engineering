@@ -30,7 +30,7 @@ or more precisely (dated back mid 2019, since then redis, airflow & RGPD topics 
 
 
 GCP Service | Service Function | Certification weight 
---------|-------------|-------------|
+:--- |:--- |:--- |
 Cloud Storage | Unified object storage | 2 % |
 Cloud SQL & Spanner | Fully-managed SQL Database | 4 % | 
 Cloud Datastore | NoSQL database (think adhoc storage) | 2 % | 
@@ -40,7 +40,7 @@ Pub/Sub | Asynchronous messaging service | 6 % |
 Cloud Dataproc | Managed hadoop and spark | 12 % | 
 Cloud Dataflow | Data Processing (Pipelines) | 16 % | 
 Tensorflow | Machine learning language | 20 % | 
-** La certification a été mise à jour en avril 2019 en ajoutant redis et airflow managé + RGPD
+
 
 
 ## Usefull links
