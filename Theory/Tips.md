@@ -19,7 +19,7 @@
 
 
 
-#### Exam question topics:
+### Exam question topics:
 - Storage (20%),
 - Big Data Processing (35%),
 - Machine Learning (18%),
@@ -28,16 +28,18 @@
 
 or more precisely (dated back mid 2019, since then redis, airflow & RGPD topics have been added) :
 
-GCP Service	Service Function	Certification Weight
-Cloud Storage	Unified object storage	2 %
-Cloud SQL & Spanner	Fully-managed SQL Database	4 %
-Cloud Datastore	NoSQL database (think adhoc storage)	2 %
-Big Table	NoSQL massive data big data service	16 %
-Big Query	Petabyte scale data warehouse	16 %
-Pub/Sub	Asynchronous messaging service	6 %
-Cloud Dataproc	Managed hadoop and spark	12 %
-Cloud Dataflow	Data Processing (Pipelines)	16 %
-Tensorflow	Machine learning language	20 %
+
+GCP Service | Service Function | Certification weight 
+--------|-------------|-------------|
+Cloud Storage | Unified object storage | 2 % |
+Cloud SQL & Spanner | Fully-managed SQL Database | 4 % | 
+Cloud Datastore | NoSQL database (think adhoc storage) | 2 % | 
+Big Table | NoSQL massive data big data service | 16 % | 
+Big Query | Petabyte scale data warehouse | 16 % | 
+Pub/Sub | Asynchronous messaging service | 6 % | 
+Cloud Dataproc | Managed hadoop and spark | 12 % | 
+Cloud Dataflow | Data Processing (Pipelines) | 16 % | 
+Tensorflow | Machine learning language | 20 % | 
 ** La certification a été mise à jour en avril 2019 en ajoutant redis et airflow managé + RGPD
 
 
