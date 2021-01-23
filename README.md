@@ -1,7 +1,7 @@
 # GCP Data Engineering
 A Professional Data Engineer enables data-driven decision making by collecting, transforming, and publishing data. A Data Engineer should be able to design, build, operationalize, secure, and monitor data processing systems with a particular emphasis on security and compliance; scalability and efficiency; reliability and fidelity; and flexibility and portability. A Data Engineer should also be able to leverage, deploy, and continuously train pre-existing machine learning models.
 
-![Example](Theory/pictures/GCP_logo.png "Example")
+![Example](Theory//pictures/banner%20for%20website/banner_with_logo.jpg "Example")
 
 The GCP Professional Data Engineer exam assesses your ability to:
 - Design data processing systems
