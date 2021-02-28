@@ -20,9 +20,9 @@ Then in the __Practice__ section, you'll find all the capstone projects i've acc
 1. [Selection of the appropriate Storage Technology](Theory/Storage.md)
 2. [Build a Storage System & Operations](Theory/Build_storage.md)
 3. [Design Data Pipelines](Theory/Pipelines.md)
-4. [Data Processing Solutions](Theory/Processing.md) __TO BE CONTINUED SOON__
+4. [Data Processing Solutions](Theory/Processing.md) __TO BE CONTINUED__
 5. [Build an Instrastructure & Operations](Theory/Build_infra.md)
-6. [Security & Compliance](Theory/Security_compliance.md) __TO BE CONTINUED SOON__
+6. [Security & Compliance](Theory/Security_compliance.md) __TO BE CONTINUED__
 7. [DB - Reliability, Scalability & Availability](Theory/DB_scale.md)
 8. Flexibility & Portability
 9. ML Pipelines
