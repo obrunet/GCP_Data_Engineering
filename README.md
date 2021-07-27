@@ -9,11 +9,11 @@ The GCP Professional Data Engineer exam assesses your ability to:
 - Operationalize machine learning models
 - Ensure solution quality
 
-# Introduction
+## Introduction
 In the __Theory__ chapter are presented my personnal notes that summerize everything one need to know in order to get prepared for this exam/certification.
 Then in the __Practice__ section, you'll find all the capstone projects i've accomplished to master the different GCP components.
 
-# Theory
+## Theory
 0. [All Services](Theory/Components.md)
 1. [Selection of the appropriate Storage Technology](Theory/Storage.md)
 2. [Build a Storage System & Operations](Theory/Build_storage.md)
@@ -33,7 +33,7 @@ The M.L part is not developped here since i'm already familliar with all the Dat
 
 
 
-# Practice
+## Practice
 - will be updated later
 - Qwliks
     - GCP Essentials - [Official links](https://google.qwiklabs.com/quests/23) - [Local working dir](Practice/1_Qwicklabs_GCP%20essentials)
@@ -42,9 +42,9 @@ The M.L part is not developped here since i'm already familliar with all the Dat
     - Engineer Data in Google Cloud - [Official links](https://run.qwiklabs.com/quests/132) - [Local working dir](Practice/4_Engineer%20Data%20in%20Google%20Cloud)
 - GCP solutions
 
-# [Tips for the exam & usefull links](Theory/Tips.md) 
+## [Tips for the exam & usefull links](Theory/Tips.md) 
 
-# References
+## References
 - [Data Lifecycle](https://cloud.google.com/solutions/data-lifecycle-cloud-platform)
 - [A Cloud Guru - Google Certified Professional Data Engineer](https://anonym.to/?https://acloudguru.com/course/google-certified-professional-data-engineer)
 - [Pluralsight - Google Cloud Certified Professional Data Engineer](https://anonym.to/?https://www.pluralsight.com/paths/data-engineering-with-google-cloud)
